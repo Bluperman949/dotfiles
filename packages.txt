@@ -10,7 +10,6 @@ zsh
 i3-wm
 discord
 spotify
-spotify-player
 feh
 fzf
 bat
