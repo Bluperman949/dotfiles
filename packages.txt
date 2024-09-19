@@ -1,0 +1,1 @@
+lightdm firefox kitty neovim polybar picom rofi starship zsh i3-wm discord spotify spotify-player feh fzf bat ranger ttf-jetbrains-mono-nerd tree stow redshift pulseaudio alsa-utils git neofetch less fcitx fcitx-configtool fcitx-mozc escrotum-git adobe-source-han-mono-jp-fonts at
