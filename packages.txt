@@ -30,3 +30,5 @@ escrotum-git
 adobe-source-han-mono-jp-fonts
 at
 github-cli
+unzip
+gzip

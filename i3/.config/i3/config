@@ -69,6 +69,7 @@ focus_follows_mouse no
 # Keybinds for common apps
 bindsym $mod+o exec --no-startup-id firefox
 bindsym $mod+g exec --no-startup-id gimp
+bindsym $mod+i exec --no-startup-id kitty nvim
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -78,7 +79,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle 
 
 # start a terminal, exit fullscreen if possible
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal; fullscreen disable
+bindsym $mod+Return exec --no-startup-id kitty; fullscreen disable
+# fullscreen version for quick commands 
+bindsym $mod+Shift+Return exec --no-startup-id kitty --start-as=fullscreen
 
 # start rofi (replacement for dmenu)
 bindcode $mod+65 exec --no-startup-id rofi -show

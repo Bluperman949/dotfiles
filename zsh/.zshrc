@@ -29,7 +29,6 @@ alias install='yay -S'
 alias uninstall='yay -Rs'
 alias update='yay -u'
 alias tree='tree -Ca -I .git --filelimit=40'
-alias v="nvim +'execute \"normal \<C-p>\"'"
 alias findfont="fc-list ':' file | grep "
 alias py="python"
 alias alsamixer="alsamixer -BMV capture"

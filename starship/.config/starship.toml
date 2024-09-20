@@ -55,8 +55,8 @@ truncation_symbol = "…/"
 "Documents" = "󰈙"
 "Downloads" = " "
 "Pictures" = "󰋩 "
-".dotfiles" = " "
-".config" = " "
+".dotfiles" = ". "
+".config" = "! "
 
 [git_branch]
 symbol = ""
