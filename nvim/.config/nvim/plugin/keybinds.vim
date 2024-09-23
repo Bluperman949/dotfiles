@@ -65,7 +65,6 @@ nmap U <C-r>
 "ino <C-S-'> "
 "ino <expr> " TestCurChar("\"") ? "<Right>" : "\"\"<Left>"
 "ino <expr> <CR> TestCurChar('})]') ? "<CR><Esc>%a<CR><Tab><End>" : "<CR>" 
-ino <A-S-,> </
 
 "functions
 function! TestCurChar(sample)

@@ -15,6 +15,5 @@ return {
   'windwp/nvim-autopairs',
   'L3MON4D3/LuaSnip',
   'saadparwaiz1/cmp_luasnip',
-  'RubixTheSlime/vim-mcfunction',
-  'alvan/vim-closetag'
+  'RubixTheSlime/vim-mcfunction'
 }

@@ -1,7 +1,7 @@
 -- consts
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 LSPS = {
-    'lua_ls', 'clangd', 'vimls', 'basedpyright', 'html', 'cssls', 'emmet_ls'
+    'lua_ls', 'clangd', 'vimls', 'basedpyright'
 }
 
 -- vim opts
@@ -45,7 +45,7 @@ luasnip.setup {
   version = 'v2.3.0',
   build = 'make install_jsregexp'
 }
-require('luasnip.loaders.from_vscode').lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snippets" })
 
 mason.setup {}
 mason_lspconfig.setup {
@@ -65,21 +65,16 @@ cmp.setup {
     ),
     ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<CR>'] = cmp.mapping(function (fallback)
-      if cmp.visible() then cmp.confirm({select = true})
-      elseif luasnip.locally_jumpable() then luasnip.jump(1)
-      else fallback() end
-    end, {'i', 's'}),
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then cmp.confirm({select = true})
       elseif luasnip.expandable() then luasnip.expand()
       elseif luasnip.locally_jumpable(1) then luasnip.jump(1)
       else fallback() end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if luasnip.locally_jumpable(-1) then luasnip.jump(-1)
       else fallback() end
-    end, { 'i', 's' }),
+    end, { "i", "s" }),
   }),
   sources = cmp.config.sources(
     {{ name = 'nvim_lsp' }, { name = 'luasnip' }},
