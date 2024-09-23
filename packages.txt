@@ -32,3 +32,4 @@ at
 github-cli
 unzip
 gzip
+npm
