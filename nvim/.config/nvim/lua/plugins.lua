@@ -1,23 +1,19 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git","clone","--filter=blob:none","https://github.com/folke/lazy.nvim.git",
-    lazypath
-  })
-end
-
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup {
-    "ellisonleao/gruvbox.nvim",
-    "junegunn/fzf",
-    "junegunn/fzf.vim",
-    {
-      "nvim-tree/nvim-tree.lua",
-      opts = {
-          on_attach = my_on_attach,
-      },
-    },
-    "nvim-telescope/telescope.nvim",
+return {
+  'ellisonleao/gruvbox.nvim',
+  'junegunn/fzf',
+  'junegunn/fzf.vim',
+  'nvim-tree/nvim-tree.lua',
+  'nvim-tree/nvim-web-devicons',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'neovim/nvim-lspconfig',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'windwp/nvim-autopairs',
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
+  'RubixTheSlime/vim-mcfunction'
 }
