@@ -8,3 +8,5 @@ cd ~/.dotfiles
 sudo cp -r etc/* /etc/
 
 yay -S - < packages.txt
+
+ls -d */ | stow -v
