@@ -33,6 +33,7 @@ alias findfont="fc-list ':' file | grep "
 alias py="python"
 alias alsamixer="alsamixer -BMV capture"
 alias gitpush="git push --set-upstream origin"
+alias nvims="nvim -c 'so ~/.nvimsesh.vim'"
 
 #eval "$(oh-my-posh init zsh -c "~/.config/.omp.json")"
 autoload -Uz promptinit
