@@ -2,7 +2,7 @@
 configuration {
 
   modes: "drun,window,run,filebrowser";
-  font: "JetBrainsMonoNerdFont SemiBold 12";
+  font: "JetBrainsMonoNerdFont SemiBold 16";
   show-icons: true;
   drun-show-actions: false;
   sidebar-mode: true;
