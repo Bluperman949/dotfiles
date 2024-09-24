@@ -3,6 +3,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 zstyle :compinstall filename '/home/chris/.zshrc'
 autoload -Uz compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 compinit
 
 bindkey -v
