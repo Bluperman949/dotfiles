@@ -36,7 +36,7 @@ alias nvims="nvim -c 'so ~/.nvimsesh.vim'"
 alias gitpush='git push --set-upstream origin'
 alias gitt='git status'
 alias gmit='git commit -m '
-alias gog='git log --graph --oneline --all'
+alias gog='git-graph -m simple'
 
 #eval "$(oh-my-posh init zsh -c "~/.config/.omp.json")"
 autoload -Uz promptinit
