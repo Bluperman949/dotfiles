@@ -1,17 +1,8 @@
 -- consts
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 LSPS = {
-    'lua_ls', 'clangd', 'vimls', 'basedpyright', 'html', 'cssls', 'emmet_ls'
+  'lua_ls', 'clangd', 'vimls', 'basedpyright', 'html', 'cssls', 'emmet_ls'
 }
-
--- vim opts
-vim.opt.relativenumber = true
-vim.opt.termguicolors = true
-vim.opt.cursorline = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.clipboard = 'unnamed'
 
 -- setup Lazy if nonexistent
 if not vim.loop.fs_stat(lazypath) then
@@ -118,3 +109,13 @@ end
 
 -- keybinds
 require('keybinds')
+
+-- vim opts
+vim.opt.relativenumber = true
+vim.opt.termguicolors = true
+vim.opt.cursorline = true
+vim.opt.clipboard = 'unnamed'
+
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
