@@ -1,0 +1,13 @@
+diff --git a/python.vim b/python.vim
+index c000296..321a861 100644
+--- a/python.vim
++++ b/python.vim
+@@ -120,7 +120,7 @@ endif
+ 
+ if !exists("g:python_recommended_style") || g:python_recommended_style != 0
+     " As suggested by PEP8.
+-    setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
++    setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
+ endif
+ 
+ " Use pydoc for keywordprg.

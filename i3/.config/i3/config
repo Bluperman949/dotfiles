@@ -237,15 +237,13 @@ set $purplef #8f3f71
 set $aquaf   #427b58
 set $orangef #af3a03
 
-gaps inner 8
-smart_gaps on
 smart_borders on
 
 #                       bdr      bg       text    indic    cbdr
 client.focused          $yellow  $yellow  $dark0  $yellowb $yellow
 client.focused_inactive $aquaf   $aquaf   $light1 $aqua    $aquaf
-client.unfocused        $dark2   $dark2   $light1 $aqua    $dark2
-client.urgent           $red     $red     $light0 $redf    $red
+client.unfocused        $dark0   $dark0   $light1 $aqua    $dark0
+client.urgent           $red     $red     $light0 $redb    $red
 client.placeholder      $dark2   $dark2   $light1 $aqua    $dark2
 client.background $dark0
 
