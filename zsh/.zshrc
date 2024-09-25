@@ -45,3 +45,4 @@ promptinit
 eval "$(starship init zsh)"
 
 source ~/.spotify_player.sh
+source ~/.zshlocal
