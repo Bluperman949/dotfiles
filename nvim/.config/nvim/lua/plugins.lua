@@ -1,5 +1,6 @@
 return {
   'ellisonleao/gruvbox.nvim',
+  'nvim-treesitter/nvim-treesitter',
   'junegunn/fzf',
   'junegunn/fzf.vim',
   'nvim-tree/nvim-tree.lua',
@@ -13,9 +14,16 @@ return {
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
   'windwp/nvim-autopairs',
-  'L3MON4D3/LuaSnip',
+  {
+    'L3MON4D3/LuaSnip',
+    dependencies = {
+      'Wscats/html-snippets'
+    }
+  },
   'saadparwaiz1/cmp_luasnip',
-  'RubixTheSlime/vim-mcfunction',
+  'Vimjas/vim-python-pep8-indent',
   'alvan/vim-closetag',
-  'Vimjas/vim-python-pep8-indent'
+  'tpope/vim-surround',
+  'folke/trouble.nvim',
+  'tpope/vim-commentary'
 }

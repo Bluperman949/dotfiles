@@ -1,24 +1,45 @@
+"
+"  keybinds.vim
+"  Author: Christian Doolittle
+"
+
 "misc
 no <Space> :
-no <A-e> <cmd>w<CR>
+no <A-e> :w<cr>
+ino <A-e> <esc>:w<cr>
+no <C-S-w> <cmd>set wrap!<cr>
+no <C-S-b> <cmd>term cat ~/Documents/ref/chars.txt<cr>
 
 "text browsing
-no <F4> :nohlsearch<CR>
+no <F4> <cmd>nohlsearch<cr>
 no <C-j> <nop>
-no L $
+
 no H 0
-no J <C-d>
-no K <C-u>
-no E b
+no 0 ^
+no J 10j
+no K 10k
+nno L 078l
+ino <A-l> <esc>ll
+ino <A-j> <esc>j
+ino <A-k> <esc>k
+ino <A-h> <esc>h
+
+nno w El
+vno w El
+nno W Bh
+vno W Bh
+nno e el
+vno e el
+nno E bh
+vno E bh
 
 "window/file browsing
-no <F9> :call ClearBufs()<CR>
-no <F10> :tabnew %<CR>:ball<CR>
+no <F9> <cmd>call ClearBufs()<cr>
+no <F10> <cmd>tabnew %<cr><cmd>ball<cr>
 
-no <A-CR> <C-w>v<C-w>l
-no <A-q> <cmd>q<CR>
-no <C-s-q> :q!<CR>
-no <C-A-q> <nop>
+no <A-q> <cmd>q<cr>
+no <S-A-q> <cmd>q!<cr>
+no <a-v>d <cmd>vs<cr>
 
 no <A-a> <C-w>h
 no <A-s> <C-w>j
@@ -29,7 +50,10 @@ no <A-S> <C-w>J
 no <A-W> <C-w>K
 no <A-D> <C-w>L
 
-no <A-t> :tabnew %<CR>
+no <A-,> <C-w><
+no <A-.> <C-w>>
+
+no <A-t> <cmd>tabnew %<cr>
 no <C-A-a> gT
 no <C-A-d> gt
 
@@ -37,47 +61,42 @@ no <A-h> <C-o>
 no <A-l> <C-i>
 
 "plugin integration
-no <C-o> :Files<CR>
-no <C-A-f> :Lines<CR>
-no <C-f> :BLines<CR>
-no t :NvimTreeFocus<CR>
-no <F5> <cmd>silent !kitty @launch --type=overlay --cwd=current<CR>
+no <C-o> <cmd>Files<cr>
+no <C-A-f> <cmd>Lines<cr>
+no <C-f> <cmd>BLines<cr>
+map t <nop>
+no to <cmd>NvimTreeToggle<cr>
+no tt <cmd>Trouble focus<cr>
+no tq <cmd>Trouble close<cr>
+no tp <cmd>Trouble diagnostics<cr>
+no tr <cmd>Trouble lsp_references<cr>
+no tf <cmd>Trouble quickfix<cr>
+nmap s ys
 
 "text editing
-nn <A-j> :m+1<CR>
-nn <A-k> :m-2<CR>
-"no <F2> "ryiw:%s/<C-r>r//g<Left><Left>
-"vno <F2> "ry:%s/<C-r>r//g<Left><Left>
-nmap ciq ci"
-nmap diq di"
-nmap yiq yi"
-nmap viq vi"
-nmap U <C-r>
-no <C-S-j> A,<CR>
+nn <A-j> <cmd>m+1<cr>
+nn <A-k> <cmd>m-2<cr>
+no <C-S-j> A,<cr>
+no <C-S-k> j<cmd>s/^ */<cr><cmd>nohl<cr>i<backspace>
+no <F2> "ryiw:%s/<C-r>r//g<left><left>
+vno <F2> "ry:%s/<C-r>r//g<left><left>
 
-"easy brackets
-"ino { {}<Left>
-"ino [ []<Left>
-"ino ( ()<Left>
-"ino < <><Left>
-"ino <expr> ] TestCurChar(']') ? "<Right>" : "]"
-"ino <expr> ) TestCurChar(')') ? "<Right>" : ")"
-"ino <expr> > TestCurChar('>') ? "<Right>" : ">"
-"ino <C-'> '
-"ino <expr> ' TestCurChar("\'") ? "<Right>" : "\'\'<Left>"
-"ino <C-S-'> "
-"ino <expr> " TestCurChar("\"") ? "<Right>" : "\"\"<Left>"
-"ino <expr> <CR> TestCurChar('})]') ? "<CR><Esc>%a<CR><Tab><End>" : "<CR>" 
+ono q "
+nmap yaa ggyG
+nmap U <cmd>redo<cr>
+
+ino <A-s> <backspace>
+ino <A-x> <del>
+ino <C-;> <end>;
+ino <A-'> '
+ino <A-S-'> "
 
 "functions
 function! ClearBufs()
   let bufs = nvim_list_bufs()
   for bufnr in bufs
     if bufwinnr(bufnr) == -1
-      execute("bw ".bufnr)
+      execute('bw '.bufnr)
     endif
   endfor
 endfunction
-"function! TestCurChar(sample)
-"  return matchstr(a:sample, '['.getline('.')[col('.')-1].']') != ""
-"endfuncti

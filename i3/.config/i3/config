@@ -29,6 +29,9 @@ set $wsSpotify "12:."
 #               Start-up               #
 ########################################
 
+# keyboard changes
+bindsym $mod+Shift+c exec --no-startup-id setxkbmap -layout us -option ctrl:swapcaps
+bindsym $mod+m exec --no-startup-id ~/.config/i3/touchpad.sh
 exec --no-startup-id fcitx
 
 # Start Redshift (blue-light filter) in Redmond, WA
@@ -51,14 +54,8 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# RIP pipewire
-
-# Start Discord in ws10
-exec --no-startup-id i3-msg 'workspace $wsDiscord; exec --no-startup-id discord'
+# mount OneDrive via rclone
+exec --no-startup-id rclone --vfs-cache-mode writes mount onedrive: ~/Documents/OneDrive
 
 ########################################
 #               Keybinds               #
@@ -68,20 +65,23 @@ focus_follows_mouse no
 
 # Keybinds for common apps
 bindsym $mod+o exec --no-startup-id firefox
-bindsym $mod+g exec --no-startup-id gimp
 bindsym $mod+i exec --no-startup-id kitty nvim
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Use brightnessctl to adjust brightness
+bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight s 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight s 10%-
 
 # start a terminal, exit fullscreen if possible
-bindsym $mod+Return exec --no-startup-id kitty; fullscreen disable
-# fullscreen version for quick commands 
-bindsym $mod+Shift+Return exec --no-startup-id kitty --start-as=fullscreen
+bindsym $mod+Return exec --no-startup-id kitty -1; fullscreen disable
+# start a terminal with the "runner" class so it floats in the middle
+bindsym $mod+Shift+Return exec --no-startup-id kitty --class=runner -1
+for_window [class="runner"] floating enable, resize set width 1400 height 1000, move position center
 
 # start rofi (replacement for dmenu)
 bindcode $mod+65 exec --no-startup-id rofi -show
@@ -89,8 +89,9 @@ bindcode $mod+65 exec --no-startup-id rofi -show
 # take screenshots/record with... uh.. "escrotum".
 bindsym $mod+x exec --no-startup-id escrotum -C
 bindsym $mod+Shift+x exec --no-startup-id escrotum -sC
-bindsym Mod1+Ctrl+r exec --no-startup-id escrotum -r ~/Videos/Recordings/%Y-%m-%d_%H:%M:%S-recording.webm
+bindsym Ctrl+Mod1+r exec --no-startup-id escrotum -r ~/Videos/Recordings/%Y-%m-%d_%H:%M:%S-recording.webm
 
+# kill the focused window
 bindsym $mod+q kill
 
 # change focus
@@ -148,8 +149,7 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws0
 bindsym $mod+bracketleft workspace $wsDiscord
 bindsym $mod+bracketright workspace $wsSpotify
-bindsym $mod+Ctrl+a workspace prev
-bindsym $mod+Ctrl+d workspace next
+bindsym $mod+Tab workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -204,7 +204,7 @@ bindsym $mod+r mode "resize"
 ########################################
 
 # colors
-set $dark0   #282828 
+set $dark0   #282828
 set $dark1   #3c3836
 set $dark2   #504945
 set $dark3   #665c54

@@ -1,7 +1,8 @@
 -- consts
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 LSPS = {
-  'lua_ls', 'clangd', 'vimls', 'basedpyright', 'html', 'cssls', 'emmet_ls'
+  'lua_ls', 'clangd', 'vimls', 'basedpyright', 'html', 'cssls', 'zls',
+  'bashls', 'ts_ls'
 }
 
 -- setup Lazy if nonexistent
@@ -23,6 +24,7 @@ require('nvim-autopairs').setup {
   event = 'InsertEnter',
   config = true
 }
+require('trouble').setup {}
 
 -- LSP and autocomplete setup
 local lspconfig = require('lspconfig')
@@ -51,23 +53,22 @@ cmp.setup {
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<Esc>'] = cmp.mapping (
-
-    ),
+    ['<C-l>'] = cmp.mapping (function (fallback)
+      if cmp.visible() then cmp.abort()
+      else fallback() end
+    end, {'i'}),
     ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<CR>'] = cmp.mapping(function (fallback)
-      if cmp.visible() then cmp.confirm({select = true})
-      elseif luasnip.locally_jumpable() then luasnip.jump(1)
-      else fallback() end
-    end, {'i', 's'}),
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function (fallback)
       if cmp.visible() then cmp.confirm({select = true})
       elseif luasnip.expandable() then luasnip.expand()
-      elseif luasnip.locally_jumpable(1) then luasnip.jump(1)
+      else fallback() end
+    end, {'i', 's'}),
+    ['<C-n>'] = cmp.mapping(function(fallback)
+      if luasnip.locally_jumpable(1) then luasnip.jump(1)
       else fallback() end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+    ['<C-p>'] = cmp.mapping(function(fallback)
       if luasnip.locally_jumpable(-1) then luasnip.jump(-1)
       else fallback() end
     end, { 'i', 's' }),
@@ -76,9 +77,7 @@ cmp.setup {
     {{ name = 'nvim_lsp' }, { name = 'luasnip' }},
     {{ name = 'buffer' }}
   ),
-  experimental = {
-      ghost_text = true
-  }
+  experimental = { ghost_text = true}
 }
 
 cmp.setup.cmdline({ '/', '?' }, {
@@ -95,27 +94,26 @@ cmp.setup.cmdline(':', {
   matching = { disallow_symbol_nonprefix_matching = false }
 })
 
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _,i in pairs(LSPS) do
-  lspconfig[i].setup {
-    capabilities = capabilities
-  }
+  lspconfig[i].setup { capabilities = capabilities }
 end
+
+lspconfig['bashls'].setup { filetypes = {'sh', 'zsh'} }
 
 -- keybinds
 require('keybinds')
 
--- vim opts
-vim.opt.relativenumber = true
-vim.opt.termguicolors = true
-vim.opt.cursorline = true
-vim.opt.clipboard = 'unnamed'
+-- highlighting
+vim.api.nvim_set_hl(0, 'ExtraWhitespace', {ctermbg = 'darkred', bg = 'darkred'})
+vim.fn.matchadd('ExtraWhitespace', " \\+$")
+vim.g.c_syntax_for_h = 1
 
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+local tsc = require('nvim-treesitter.configs')
+tsc.setup {
+  ensure_installed = { 'c', 'python', 'zig', 'lua', 'javascript' },
+  highlight = { enable = true },
+  indent = { enable = true }
+}

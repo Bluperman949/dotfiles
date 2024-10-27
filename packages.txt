@@ -15,6 +15,7 @@ fzf
 bat
 ranger
 ttf-jetbrains-mono-nerd
+ttf-twemoji-color
 tree
 stow
 redshift
@@ -27,9 +28,10 @@ fcitx
 fcitx-configtool
 fcitx-mozc
 escrotum-git
-adobe-source-han-mono-jp-fonts
 at
 github-cli
 unzip
 gzip
 npm
+git-graph
+rclone

@@ -1,0 +1,4 @@
+
+[Default Applications]
+inode/directory=ranger.desktop
+text/*=nvim.desktop
