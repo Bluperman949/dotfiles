@@ -17,32 +17,42 @@ bindkey '^K' up-line-or-history
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
-export FZF_DEFAULT_OPTS='-m --preview="bat {} --color=always --theme=gruvbox-dark --style=header,grid" --no-mouse'
+export FZF_DEFAULT_OPTS='-m --preview="cat {}" --no-mouse'
 export KEYTIMEOUT=1
 export EDITOR='/usr/bin/nvim'
 export VISUAL='/usr/bin/nvim'
 
+
 alias grep='grep --color=auto'
-alias ls='ls --color=auto --hyperlink=auto'
+alias rg='rg -i'
+alias rgh='rg -.i'
+alias ls='ls --color=auto'
 alias lss='ls -lAhGS --color=always'
 alias la='ls -A --color=always'
+alias tree='tree -Ca -I .git --filelimit=40'
+
 alias install='yay -S'
 alias uninstall='yay -Rs'
 alias update='yay -Syu'
-alias tree='tree -Ca -I .git --filelimit=40'
-alias findfont="fc-list ':' file | grep "
-alias py='python'
-alias alsamixer='alsamixer -BMV capture'
-alias nvims="nvim -c 'so ~/.nvimsesh.vim'"
+
 alias gitpush='git push --set-upstream origin'
 alias gitt='git status'
 alias gmit='git commit -m '
 alias gog='git-graph -m simple'
 
-#eval "$(oh-my-posh init zsh -c "~/.config/.omp.json")"
+alias py='python'
+alias pynew='cp ~/Code/py/template.py'
+
+alias v='nvim'
+alias vconf='cd ~/.config/nvim; nvim'
+alias dw='cd $(FZF_DEFAULT_COMMAND="fd -Ht d" fzf --preview="tree -CaL 1 {}")'
+
+alias findfont="fc-list ':' file | grep "
+alias alsamixer='alsamixer -BMV capture'
+
+
 autoload -Uz promptinit
 promptinit
 eval "$(starship init zsh)"
 
-source ~/.spotify_player.sh
-source ~/.zshlocal
+source ~/.localzsh
