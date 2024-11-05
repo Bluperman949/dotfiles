@@ -8,16 +8,23 @@ compinit
 
 bindkey -v
 bindkey '^[[H' beginning-of-line
-bindkey '^[[4~' end-of-line
+bindkey '^[[F' end-of-line
 bindkey '^?' backward-delete-char
-bindkey '^[[3~' vi-delete-char
 bindkey '^[[3~' vi-delete-char
 bindkey '^J' down-line-or-history
 bindkey '^K' up-line-or-history
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
-export FZF_DEFAULT_OPTS='-m --preview="cat {}" --no-mouse'
+export FZF_DEFAULT_COMMAND='fd -t f'
+export FZF_DEFAULT_OPTS="
+  --multi --no-mouse
+  --color=16
+  --color=border:#32302f
+  --border=rounded
+  --preview-window=border-none
+  --preview='~/show.sh {}'"
+export BAT_THEME='gruvbox-dark'
 export KEYTIMEOUT=1
 export EDITOR='/usr/bin/nvim'
 export VISUAL='/usr/bin/nvim'
@@ -30,6 +37,9 @@ alias ls='ls --color=auto'
 alias lss='ls -lAhGS --color=always'
 alias la='ls -A --color=always'
 alias tree='tree -Ca -I .git --filelimit=40'
+
+alias show='~/show.sh'
+alias listen='~/listen.sh'
 
 alias install='yay -S'
 alias uninstall='yay -Rs'
