@@ -23,16 +23,12 @@ set $ws8 8
 set $ws9 9
 set $ws0 "10:0"
 set $wsDiscord "11:."
-set $wsSpotify "12:."
 
 ########################################
 #               Start-up               #
 ########################################
 
-# keyboard changes
-bindsym $mod+Shift+c exec --no-startup-id setxkbmap -layout us -option ctrl:swapcaps
-bindsym $mod+m exec --no-startup-id ~/.config/i3/touchpad.sh
-exec --no-startup-id fcitx
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 # Start Redshift (blue-light filter) in Redmond, WA
 exec --no-startup-id redshift-gtk -l 47.67399:-122.12151 -t 4800:4800
@@ -63,9 +59,8 @@ exec --no-startup-id rclone --vfs-cache-mode writes mount onedrive: ~/Documents/
 
 focus_follows_mouse no
 
-# Keybinds for common apps
-bindsym $mod+o exec --no-startup-id firefox
-bindsym $mod+i exec --no-startup-id kitty nvim
+# toggle mousepad
+bindsym $mod+m exec --no-startup-id ~/.config/i3/touchpad.sh
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -83,6 +78,10 @@ bindsym $mod+Return exec --no-startup-id kitty -1; fullscreen disable
 bindsym $mod+Shift+Return exec --no-startup-id kitty --class=runner -1
 for_window [class="runner"] floating enable, resize set width 1400 height 1000, move position center
 
+# Keybinds for common apps
+bindsym $mod+o exec --no-startup-id firefox
+bindsym $mod+i exec --no-startup-id kitty nvim
+
 # start rofi (replacement for dmenu)
 bindcode $mod+65 exec --no-startup-id rofi -show
 
@@ -90,6 +89,9 @@ bindcode $mod+65 exec --no-startup-id rofi -show
 bindsym $mod+x exec --no-startup-id escrotum -C
 bindsym $mod+Shift+x exec --no-startup-id escrotum -sC
 bindsym Ctrl+Mod1+r exec --no-startup-id escrotum -r ~/Videos/Recordings/%Y-%m-%d_%H:%M:%S-recording.webm
+
+# color picker piped to clipboard
+bindsym $mod+p exec "grabc"
 
 # kill the focused window
 bindsym $mod+q kill
@@ -148,7 +150,6 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws0
 bindsym $mod+bracketleft workspace $wsDiscord
-bindsym $mod+bracketright workspace $wsSpotify
 bindsym $mod+Tab workspace next
 
 # move focused container to workspace
@@ -163,7 +164,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 bindsym $mod+Shift+bracketleft move container to workspace $wsDiscord; workspace $wsDiscord
-bindsym $mod+Shift+bracketright move container to workspace $wsSpotify; workspace $wsSpotify
 bindsym $mod+Ctrl+Shift+a move container to workspace prev; workspace prev
 bindsym $mod+Ctrl+Shift+d move container to workspace next; workspace next
 

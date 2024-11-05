@@ -1,17 +1,8 @@
 //@theme "/usr/share/rofi/themes/gruvbox-light.rasi"
 configuration {
 
-<<<<<<< Updated upstream
-  modes: "drun,window,run,filebrowser";
-<<<<<<< HEAD
+  modes: "drun,run,window";
   font: "JetBrainsMonoNerdFont SemiBold 16";
-=======
-  font: "JetBrainsMonoNerdFont SemiBold 12";
-=======
-  modes: "run,drun,window,filebrowser";
-  font: "JetBrainsMonoNerdFont SemiBold 16";
->>>>>>> Stashed changes
->>>>>>> master
   show-icons: true;
   drun-show-actions: false;
   sidebar-mode: true;
