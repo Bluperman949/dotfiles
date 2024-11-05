@@ -16,10 +16,11 @@ no <C-j> <nop>
 
 no H 0
 no 0 ^
-no J 10j
-no K 10k
-nno L 078l
-ino <A-l> <esc>ll
+no J }
+no K {
+no L 078l
+ono L $
+ino <A-l> <esc>l
 ino <A-j> <esc>j
 ino <A-k> <esc>k
 ino <A-h> <esc>h

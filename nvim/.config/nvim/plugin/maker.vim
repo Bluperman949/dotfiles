@@ -7,7 +7,7 @@
 augroup Maker
   autocmd!
   au BufWinEnter,BufReadPost * let b:makestr="make"
-  au BufWinEnter,BufReadPost *.zig let b:makestr="zig build run"
+  au BufWinEnter,BufReadPost *.zig,*.zon let b:makestr="zig build run"
   au BufWinEnter,BufReadPost *.py let b:makestr="python %"
 augroup END
 
