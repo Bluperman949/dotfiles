@@ -2,7 +2,7 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 LSPS = {
   'lua_ls', 'clangd', 'vimls', 'basedpyright', 'html', 'cssls', 'zls',
-  'bashls', 'ts_ls'
+  'bashls'
 }
 
 -- setup Lazy if nonexistent
@@ -102,6 +102,7 @@ for _,i in pairs(LSPS) do
 end
 
 lspconfig['bashls'].setup { filetypes = {'sh', 'zsh'} }
+lspconfig['zls'].setup { filetypes = {'zig', 'zon', 'zir'} }
 
 -- keybinds
 require('keybinds')

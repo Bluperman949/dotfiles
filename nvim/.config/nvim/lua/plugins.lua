@@ -13,12 +13,9 @@ return {
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
-  'windwp/nvim-autopairs',
-  {
+  'windwp/nvim-autopairs', {
     'L3MON4D3/LuaSnip',
-    dependencies = {
-      'Wscats/html-snippets'
-    }
+    dependencies = { 'Wscats/html-snippets' }
   },
   'saadparwaiz1/cmp_luasnip',
   'Vimjas/vim-python-pep8-indent',
