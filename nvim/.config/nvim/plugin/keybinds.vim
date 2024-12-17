@@ -14,16 +14,15 @@ no <C-S-b> <cmd>term cat ~/Documents/ref/chars.txt<cr>
 no <F4> <cmd>nohlsearch<cr>
 no <C-j> <nop>
 
-no H 0
-no 0 ^
+no H ^
 no J }
 no K {
-no L 078l
+no L g$
 ono L $
-ino <A-l> <esc>l
-ino <A-j> <esc>j
-ino <A-k> <esc>k
-ino <A-h> <esc>h
+ino <A-h> <left>
+ino <A-j> <down>
+ino <A-k> <up>
+ino <A-l> <right>
 
 nno w El
 vno w El
@@ -36,16 +35,11 @@ vno E bh
 
 "window/file browsing
 no <F9> <cmd>call ClearBufs()<cr>
-no <F10> <cmd>tabnew %<cr><cmd>ball<cr>
 
 no <A-q> <cmd>q<cr>
 no <S-A-q> <cmd>q!<cr>
 no <a-v>d <cmd>vs<cr>
 
-no <A-a> <C-w>h
-no <A-s> <C-w>j
-no <A-w> <C-w>k
-no <A-d> <C-w>l
 no <A-A> <C-w>H
 no <A-S> <C-w>J
 no <A-W> <C-w>K
@@ -55,8 +49,7 @@ no <A-,> <C-w><
 no <A-.> <C-w>>
 
 no <A-t> <cmd>tabnew %<cr>
-no <C-A-a> gT
-no <C-A-d> gt
+no <C-tab> gt
 
 no <A-h> <C-o>
 no <A-l> <C-i>
@@ -86,11 +79,17 @@ ono q "
 nmap yaa ggyG
 nmap U <cmd>redo<cr>
 
-ino <A-s> <backspace>
-ino <A-x> <del>
 ino <C-;> <end>;
 ino <A-'> '
 ino <A-S-'> "
+
+ino <A-9> §
+ino <A-0> °
+ino <A-q> -
+ino <A-w> +
+ino <A-r> %
+ino <A-s> <backspace>
+ino <A-d> <del>
 
 "functions
 function! ClearBufs()

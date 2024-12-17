@@ -2,14 +2,14 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 LSPS = {
   'lua_ls', 'clangd', 'vimls', 'basedpyright', 'html', 'cssls', 'zls',
-  'bashls'
+  'bashls', 'r_language_server'
 }
 
 -- setup Lazy if nonexistent
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    'git','clone','--filter=blob:none','https://github.com/folke/lazy.nvim.git',
-    lazypath
+    'git', 'clone',
+    '--filter=blob:none','https://github.com/folke/lazy.nvim.git', lazypath
   })
 end
 
@@ -34,10 +34,6 @@ local cmp = require('cmp')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local luasnip = require('luasnip')
 
-luasnip.setup {
-  version = 'v2.3.0',
-  build = 'make install_jsregexp'
-}
 require('luasnip.loaders.from_vscode').lazy_load()
 
 mason.setup {}
@@ -103,6 +99,7 @@ end
 
 lspconfig['bashls'].setup { filetypes = {'sh', 'zsh'} }
 lspconfig['zls'].setup { filetypes = {'zig', 'zon', 'zir'} }
+lspconfig['r_language_server'].setup { filetypes = {'r'} }
 
 -- keybinds
 require('keybinds')
@@ -110,11 +107,12 @@ require('keybinds')
 -- highlighting
 vim.api.nvim_set_hl(0, 'ExtraWhitespace', {ctermbg = 'darkred', bg = 'darkred'})
 vim.fn.matchadd('ExtraWhitespace', " \\+$")
-vim.g.c_syntax_for_h = 1
 
 local tsc = require('nvim-treesitter.configs')
 tsc.setup {
-  ensure_installed = { 'c', 'python', 'zig', 'lua', 'javascript' },
+  ensure_installed = {
+    'c', 'python', 'zig', 'lua', 'javascript', 'java'
+  },
   highlight = { enable = true },
   indent = { enable = true }
 }

@@ -5,10 +5,6 @@
 "
 
 "visual
-ino <C-a>-        ─
-ino <C-a>\|       │
-ino <C-a>--       ═
-ino <C-a>\|\|     ║
 ino <C-a>/        ╱
 ino <C-a>\        ╲
 ino <C-a>X        ╳
@@ -160,20 +156,22 @@ ino <C-a>f2       ▒
 ino <C-a>f1       ▓
 ino <C-a>ff       █
 
-"h for horizontal divide
+"s for 'slab' (starmade did this to me)
 "i for inverted
-ino <C-a>hi4      ▀
-ino <C-a>hi1      ▔
-ino <C-a>h1       ▁
-ino <C-a>h2       ▂
-ino <C-a>h3       ▃
-ino <C-a>h4       ▄
-ino <C-a>h5       ▅
-ino <C-a>h6       ▆
-ino <C-a>h7       ▇
+ino <C-a>si4      ▀
+ino <C-a>si1      ▔
+ino <C-a>s1       ▁
+ino <C-a>s2       ▂
+ino <C-a>s3       ▃
+ino <C-a>s4       ▄
+ino <C-a>s5       ▅
+ino <C-a>s6       ▆
+ino <C-a>s7       ▇
+ino <C-a>s8       █
 
-"v for vertical divide
+"v for vertical slab
 "i for inverted
+ino <C-a>v8       █
 ino <C-a>v7       ▉
 ino <C-a>v6       ▊
 ino <C-a>v5       ▋
@@ -196,3 +194,4 @@ ino <C-a>bwed     ▜
 ino <C-a>be       ▝
 ino <C-a>bes      ▞
 ino <C-a>besd     ▟
+ino <C-a>bwesd    █
