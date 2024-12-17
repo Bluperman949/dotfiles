@@ -91,7 +91,7 @@ bindsym $mod+Shift+x exec --no-startup-id escrotum -sC
 bindsym Ctrl+Mod1+r exec --no-startup-id escrotum -r ~/Videos/Recordings/%Y-%m-%d_%H:%M:%S-recording.webm
 
 # color picker piped to clipboard
-bindsym $mod+p exec "grabc"
+bindsym $mod+p exec --no-startup-id ~/.config/i3/grabc.sh
 
 # kill the focused window
 bindsym $mod+q kill
@@ -240,11 +240,16 @@ set $orangef #af3a03
 smart_borders on
 
 #                       bdr      bg       text    indic    cbdr
-client.focused          $yellow  $yellow  $dark0  $yellowb $yellow
-client.focused_inactive $aquaf   $aquaf   $light1 $aqua    $aquaf
-client.unfocused        $dark0   $dark0   $light1 $aqua    $dark0
+client.focused          $aqua    $aqua    $light0 $aquab   $aqua
+client.focused_inactive $dark1   $dark1   $dark4  $aqua    $dark1
+client.unfocused        $dark0   $dark0   $dark4  $aqua    $dark0
 client.urgent           $red     $red     $light0 $redb    $red
 client.placeholder      $dark2   $dark2   $light1 $aqua    $dark2
 client.background $dark0
 
-default_border pixel 4
+default_border pixel 2
+
+
+########################################
+#              Temporary               #
+########################################
