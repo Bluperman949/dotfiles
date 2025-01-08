@@ -184,14 +184,18 @@ ino <C-a>vi1      ▕
 
 "b for blocks
 "WESD for quarters
-ino <C-a>bs       ▖
-ino <C-a>bes      ▗
 ino <C-a>bw       ▘
-ino <C-a>bwsd     ▙
-ino <C-a>bwd      ▚
-ino <C-a>bwes     ▛
-ino <C-a>bwed     ▜
 ino <C-a>be       ▝
+ino <C-a>bs       ▖
+ino <C-a>bd       ▗
+ino <C-a>bwe      ▀
+ino <C-a>bsd      ▄
+ino <C-a>bws      ▌
+ino <C-a>bed      ▐
+ino <C-a>bwd      ▚
 ino <C-a>bes      ▞
 ino <C-a>besd     ▟
+ino <C-a>bwsd     ▙
+ino <C-a>bwed     ▜
+ino <C-a>bwes     ▛
 ino <C-a>bwesd    █
