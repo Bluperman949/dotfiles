@@ -8,6 +8,7 @@ set expandtab
 
 set termguicolors
 let g:c_syntax_for_h=1
+colorscheme gruvbox
 
 set relativenumber
 set colorcolumn=80,120

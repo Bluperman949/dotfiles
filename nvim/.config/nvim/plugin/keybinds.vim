@@ -24,6 +24,8 @@ ino <A-j> <down>
 ino <A-k> <up>
 ino <A-l> <right>
 
+no <A-r> %
+
 nno w El
 vno w El
 nno W Bh
@@ -55,17 +57,11 @@ no <A-h> <C-o>
 no <A-l> <C-i>
 
 "plugin integration
-no <C-o> <cmd>Files<cr>
-no <C-A-f> <cmd>Lines<cr>
-no <C-f> <cmd>BLines<cr>
-map t <nop>
-no to <cmd>NvimTreeToggle<cr>
-no tt <cmd>Trouble focus<cr>
-no tq <cmd>Trouble close<cr>
-no tp <cmd>Trouble diagnostics<cr>
-no tr <cmd>Trouble lsp_references<cr>
-no tf <cmd>Trouble quickfix<cr>
 nmap s ys
+
+no \\   <cmd>Lazy<cr>
+no \|\| <cmd>Mason<cr>
+no - <cmd>Oil<cr>
 
 "text editing
 nn <A-j> <cmd>m+1<cr>
