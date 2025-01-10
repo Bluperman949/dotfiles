@@ -1,7 +1,7 @@
 return {
   {
     'MunsMan/kitty-navigator.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     build = {
       'cp '..DATAPATH..'kitty-navigator.nvim/*.py ~/.config/kitty/'
     },
