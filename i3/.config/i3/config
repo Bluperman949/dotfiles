@@ -65,12 +65,12 @@ bindsym $mod+m exec --no-startup-id ~/.config/i3/touchpad.sh
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use brightnessctl to adjust brightness
-bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight s 10%+
-bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight s 10%-
+# bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set 10%+
+# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
 # start a terminal, exit fullscreen if possible
 bindsym $mod+Return exec --no-startup-id kitty -1; fullscreen disable
