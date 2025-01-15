@@ -1,6 +1,7 @@
 DATAPATH = vim.fn.stdpath'data'..'/lazy/'
 
-require'my.lazy' -- provides `lazy` module
+require'my.lazy-init' -- provides `lazy` module
+require'my.debug' -- provides ptk()
 
 require'lazy'.setup{ -- `require'plugin'.setup{}` called on all nonlazy plugins
   change_detection = { enabled = false }, -- don't freeze when I make edits
@@ -8,4 +9,4 @@ require'lazy'.setup{ -- `require'plugin'.setup{}` called on all nonlazy plugins
   spec = { import = 'my.plugins' }, -- plugin specs in ./lua/plugins/
 }
 
--- require'my.debug'
+require'my.java' -- java autocmds and lazy-loading

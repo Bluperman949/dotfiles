@@ -47,9 +47,8 @@ alias gmit='git commit -m '
 alias gog='git-graph -m simple'
 
 alias py='python'
-alias Rmd=''
+alias gw='./gradlew'
 
-alias v='nvim'
 alias vconf='cd ~/.config/nvim; nvim'
 
 alias findfont="fc-list ':' file | grep "
