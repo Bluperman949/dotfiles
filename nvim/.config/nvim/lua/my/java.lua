@@ -17,17 +17,16 @@ end
 
 local function bufread_callback(args)
   require'jdtls'.start_or_attach(require'my.jdtls-config')
-  print(args.match:match'.+[.]java')
 end
 
 local function verylazy_callback()
-  local project_path = vim.fs.root(0, {'mvnw', 'gradlew'})
+  local project_path = vim.fs.root(vim.env.PWD, {'mvnw', 'gradlew'})
   if not project_path then return end
   JAVA_PROJ_PATH = project_path
   JAVA_PROJ_NAME = vim.fn.fnamemodify(JAVA_PROJ_PATH, ':t')
 
-  print('JAVA PROJECT: '..JAVA_PROJ_NAME)
-  vim.cmd('cd '..JAVA_PROJ_PATH)
+  vim.print('JAVA PROJECT: '..JAVA_PROJ_NAME)
+  -- vim.cmd('cd '..JAVA_PROJ_PATH)
 
   require'lazy'.load{plugins={'nvim-jdtls'}}
 

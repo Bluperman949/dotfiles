@@ -23,6 +23,7 @@ return {
     '-configuration', JDTLS_HOME..'/.config',
 
     '-data', JDTLS_HOME..'/.workspace/'..WORKSPACE_NAME,
+    -- '-data', PROJECT_PATH,
   },
   root_dir = PROJECT_PATH,
   settings = {
