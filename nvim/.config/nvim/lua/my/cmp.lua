@@ -7,6 +7,17 @@ M.config = function()
 
   cmp.setup{
     window = {},
+    formatting = {
+      format = function(_, item)
+        if item.menu and #item.menu > 20 then
+          item.menu = string.sub(item.menu, 1, 19)..'…'
+        end
+        if #item.abbr > 20 then
+          item.abbr = string.sub(item.abbr, 1, 19)..'…'
+        end
+        return item
+      end
+    },
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
