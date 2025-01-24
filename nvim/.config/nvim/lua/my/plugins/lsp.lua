@@ -27,13 +27,14 @@ return {
     dependencies = {
       'mason.nvim',
       'mason-lspconfig.nvim',
-      'cmp-nvim-lsp'
+      'cmp-nvim-lsp',
     },
     keys = {
-      { 'gd', vim.lsp.buf.definition  },
       { 'gr', vim.lsp.buf.rename      },
-      { 'ga', vim.lsp.buf.code_action },
-      { 'gu', vim.lsp.buf.references  },
+      -- fzf-lua handles these now
+      -- { 'gd', vim.lsp.buf.definition  },
+      -- { 'ga', vim.lsp.buf.code_action },
+      -- { 'gu', vim.lsp.buf.references  },
       { 'g<space>', vim.lsp.buf.hover },
     },
     config = function()
@@ -51,6 +52,7 @@ return {
   },
   {
     'mfussenegger/nvim-jdtls',
+    cmd = 'JdtLoad',
     config = function()
       require'jdtls'.start_or_attach(require'my.jdtls-config')
     end,
