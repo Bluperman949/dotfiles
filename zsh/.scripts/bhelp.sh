@@ -1,0 +1,1 @@
+$@ | bat -l help -p

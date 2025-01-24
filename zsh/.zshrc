@@ -28,6 +28,7 @@ export VISUAL='/usr/bin/nvim'
 alias show='show.sh'
 alias open='open.sh'
 alias d='. explore.sh'
+alias bh='bhelp.sh'
 
 alias grep='grep --color=auto'
 alias rg='rg -i'
