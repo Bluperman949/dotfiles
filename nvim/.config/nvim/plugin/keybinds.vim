@@ -19,10 +19,6 @@ no J }
 no K {
 no L g$
 ono L $
-ino <A-h> <left>
-ino <A-j> <down>
-ino <A-k> <up>
-ino <A-l> <right>
 
 no <A-r> %
 
@@ -57,32 +53,33 @@ no <A-h> <C-o>
 no <A-l> <C-i>
 
 "plugin integration
-nmap s ys
+map s ys
+map S yS
 
 no \\   <cmd>Lazy<cr>
 no \|\| <cmd>Mason<cr>
 no - <cmd>Oil<cr>
 
 "text editing
-nn <A-j> <cmd>m+1<cr>
-nn <A-k> <cmd>m-2<cr>
-no <C-S-j> A,<cr>
-no <C-S-k> j<cmd>s/^ */<cr><cmd>nohl<cr>i<backspace>
-no <F2> "ryiw:%s/<C-r>r//g<left><left>
+nno <A-j> <cmd>m+1<cr>
+nno <A-k> <cmd>m-2<cr>
+nno <C-S-j> A,<cr>
+nno <C-S-k> j<cmd>s/^ */<cr><cmd>nohl<cr>i<backspace>
+nno <F2> "ryiw:%s/<C-r>r//g<left><left>
 vno <F2> "ry:%s/<C-r>r//g<left><left>
 
-ono q "
 nmap yaa ggyG
-nmap U <cmd>redo<cr>
+nmap daa ggdG
+
+nmap U <C-r>
 
 ino <C-;> <end>;
 ino <A-'> '
 ino <A-S-'> "
+nno c<space> ciw<space><esc>
 
 ino <A-9> §
 ino <A-0> °
-ino <A-q> -
-ino <A-w> +
 ino <A-r> %
 ino <A-s> <backspace>
 ino <A-d> <del>

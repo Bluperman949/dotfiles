@@ -32,6 +32,6 @@ endfunction
 let g:makesilent=1
 call MakerToggleSilent()
 
-no ,, <cmd>w<cr>
-no ,. <cmd>w<cr><cmd>Make<cr>
+no ,. <cmd>w<cr>
+no ,, <cmd>w<cr><cmd>Make<cr>
 no ,s <cmd>call MakerToggleSilent()<cr>
