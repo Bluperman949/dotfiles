@@ -1,11 +1,24 @@
 return {
+  -- {
+  --   'rafamadriz/friendly-snippets',
+  -- },
   {
     'L3MON4D3/LuaSnip',
+    -- dependencies = {
+    --   'friendly-snippets',
+    -- },
+    build = 'make install_jsregexp',
+    config = function ()
+      require'luasnip.loaders.from_lua'.load{
+        paths = { './snippets/lua' },
+      }
+    end
   },
   {
     'saadparwaiz1/cmp_luasnip',
     dependencies = { 'LuaSnip' },
   },
+
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-path'     },
   { 'hrsh7th/cmp-buffer'   },
