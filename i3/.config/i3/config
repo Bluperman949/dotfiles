@@ -61,6 +61,7 @@ focus_follows_mouse no
 
 # toggle mousepad
 bindsym $mod+m exec --no-startup-id ~/.config/i3/touchpad.sh
+bindsym $mod+apostrophe exec --no-startup-id ~/.config/i3/colemak.sh
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
