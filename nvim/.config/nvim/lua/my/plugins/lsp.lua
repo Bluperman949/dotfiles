@@ -52,9 +52,5 @@ return {
   },
   {
     'mfussenegger/nvim-jdtls',
-    cmd = 'JdtLoad',
-    config = function()
-      require'jdtls'.start_or_attach(require'my.jdtls-config')
-    end,
   },
 }

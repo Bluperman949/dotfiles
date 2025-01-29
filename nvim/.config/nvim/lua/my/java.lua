@@ -15,11 +15,14 @@ local function oil_callback(args)
   end
 end
 
-local function bufread_callback(args)
+local function open_callback(args)
+  vim.print('JDTLS attaching :: '
+           ..vim.fn.fnamemodify(args.match, ':t')
+           ..' @ '..JAVA_PROJ_NAME)
   require'jdtls'.start_or_attach(require'my.jdtls-config')
 end
 
-local function verylazy_callback()
+local function try_init_project()
   local project_path = vim.fs.root(vim.env.PWD, {'mvnw', 'gradlew'})
   if not project_path then return end
   JAVA_PROJ_PATH = project_path
@@ -30,8 +33,8 @@ local function verylazy_callback()
 
   require'lazy'.load{plugins={'nvim-jdtls'}}
 
-  au('BufReadPost', {callback = bufread_callback})
+  au({'BufReadPost', 'BufNewFile'}, {callback = open_callback})
   uau('OilActionsPost', oil_callback)
 end
 
-uau('VeryLazy', verylazy_callback)
+uau('VeryLazy', try_init_project)
