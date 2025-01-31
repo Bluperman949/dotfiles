@@ -15,21 +15,21 @@ no <F4> <cmd>nohlsearch<cr>
 no <C-j> <nop>
 
 no H ^
-no J }
-no K {
-no L g$
-ono L $
+no J 10j
+no K 10k
+no L $
+no gL g$
 
 no <A-r> %
 
-nno w El
-vno w El
-nno W Bh
-vno W Bh
-nno e el
-vno e el
-nno E bh
-vno E bh
+nno w E
+vno w E
+nno W B
+vno W B
+nno e e
+vno e e
+nno E b
+vno E b
 
 "window/file browsing
 no <F9> <cmd>call ClearBufs()<cr>
