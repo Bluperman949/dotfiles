@@ -3,6 +3,8 @@
 "  Author: Christian Doolittle
 "
 
+no ,; <cmd>lua require'jdtls'.start_or_attach(require'my.jdtls-config')<cr>
+
 "misc
 no <Space> :
 no <A-e> :w<cr>
@@ -19,6 +21,7 @@ no J 10j
 no K 10k
 no L $
 no gL g$
+ino <A-;> <end>
 
 no <A-r> %
 
