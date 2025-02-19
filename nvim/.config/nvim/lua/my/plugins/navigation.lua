@@ -31,4 +31,8 @@ return {
       map('n', 'ff', '<Plug>(leap)')
     end,
   },
+  {
+    'stevearc/dressing.nvim',
+    event = 'VeryLazy',
+  }
 }
