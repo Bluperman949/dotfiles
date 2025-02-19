@@ -49,8 +49,8 @@ no <A-.> <C-w>>
 no <A-t> <cmd>tabnew %<cr>
 no <C-tab> gt
 
-no <A-h> <C-o>
-no <A-l> <C-i>
+autocmd BufWinEnter *.txt if &l:buftype ==# 'help'
+  \|nno <buffer> q <cmd>q<cr> | endif
 
 "plugin integration
 map s ys
