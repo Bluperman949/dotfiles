@@ -13,3 +13,8 @@ export BAT_THEME='gruvbox-dark'
 # system
 export EDITOR='/usr/bin/nvim'
 export VISUAL='/usr/bin/nvim'
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
