@@ -12,6 +12,7 @@ fzf
 git-graph
 grabc
 i3-wm
+jdk21-temurin
 kitty
 less
 lightdm
@@ -23,6 +24,7 @@ npm
 pacdep
 picom
 polybar
+python
 python-numpy
 ranger
 rclone

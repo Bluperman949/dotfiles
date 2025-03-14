@@ -9,18 +9,28 @@ return {
     config = function()
       local fzf = require'fzf-lua'
       fzf.setup{
-        'fzf-native',
-        keymap = {
-          ['<A-q>'] = 'hide',
+        'default',
+        winopts = {
+          row = 1, col = 0,
+          width = 1, height = 0.8,
+          border   = {'╶', '─', '╴', ' ', '╴', '─', '╶', ' '},
+          preview = {
+            border = { '',  '',  '', ' ', '╴', '─', '╶', ' '},
+          },
         },
+        files    = { winopts = { preview = { vertical = 'down:20%' }}},
+        oldfiles = { winopts = { preview = { vertical = 'down:20%' }}},
+        blines   = { winopts = { preview = { vertical = 'down:80%' }}},
       }
 
       map({'n', 'v'}, '<C-f>', '<nop>')
       map({'n', 'v'}, '<C-f><C-f>', fzf.blines)
-      map({'n', 'v'}, '<C-f><C-b>', fzf.buffers)
+      map({'n', 'v'}, '<C-f><C-r>', fzf.buffers)
       map({'n', 'v'}, '<C-f><C-o>', fzf.oldfiles)
       map({'n', 'v'}, '<C-f><C-i>', fzf.files)
-      map({'n', 'v'}, '<C-S-f>', fzf.builtin)
+      map({'n', 'v'}, '<C-f><C-p>', fzf.lsp_document_symbols)
+      map({'n', 'v'}, '<C-f><C-p>', fzf.lsp_document_symbols)
+      map({'n', 'v'}, '<C-f><C-g>', fzf.builtin)
 
       map({'n', 'v'}, 'gu', fzf.lsp_references)
       map({'n', 'v'}, 'gd', fzf.lsp_definitions)
@@ -28,10 +38,7 @@ return {
     end,
   },
   {
-    'ggandor/leap.nvim',
+    'stevearc/dressing.nvim',
     event = 'VeryLazy',
-    config = function()
-      map({ 'n', 'x', 'o' }, 'ff', '<Plug>(leap)')
-    end,
-  },
+  }
 }

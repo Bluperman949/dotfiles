@@ -2,25 +2,49 @@ local M = {}
 
 M.config = function()
   local cmp = require'cmp'
-  local luasnip = require'luasnip'
+  local ls = require'luasnip'
+
   local SELECT_BEHAVIOR = { behavior = cmp.SelectBehavior.Select }
+
+  -- close cmp
+  local mapping_abort = cmp.mapping(function(fallback)
+    if cmp.visible() then cmp.abort()
+    else fallback() end
+  end, { 'i', 'c' })
+  -- jump back in snippet
+  local mapping_prev = cmp.mapping(function(fallback)
+    if ls.locally_jumpable(-1) then ls.jump(-1)
+    else fallback() end
+  end, { 'i', 's' })
+  -- expand completion or jump forward
+  local mapping_complete_or_next = cmp.mapping(function(fallback)
+    if cmp.visible() then cmp.confirm()
+    elseif ls.expandable() then ls.expand()
+    elseif ls.locally_jumpable() then ls.jump(1)
+    else fallback() end
+  end, { 'i', 's', 'c' })
+  -- just jump forward
+  local mapping_next = cmp.mapping(function(fallback)
+    if ls.locally_jumpable(1) then ls.jump(1)
+    else fallback() end
+  end, { 'i', 's' })
 
   cmp.setup{
     window = {},
     formatting = {
       format = function(_, item)
-        if item.menu and #item.menu > 20 then
-          item.menu = string.sub(item.menu, 1, 19)..'…'
+        if item.menu and #item.menu > 40 then
+          item.menu = string.sub(item.menu, 1, 39)..'…'
         end
-        if #item.abbr > 20 then
-          item.abbr = string.sub(item.abbr, 1, 19)..'…'
+        if #item.abbr > 40 then
+          item.abbr = string.sub(item.abbr, 1, 39)..'…'
         end
         return item
       end
     },
     snippet = {
       expand = function(args)
-        luasnip.lsp_expand(args.body)
+        ls.lsp_expand(args.body)
       end,
     },
     sources = cmp.config.sources{
@@ -34,28 +58,13 @@ M.config = function()
 
     mapping = cmp.mapping.preset.insert{
       ['<C-space>'] = cmp.mapping.complete(),
-      ['<C-k>'] = cmp.mapping.select_prev_item(SELECT_BEHAVIOR),
-      ['<C-j>'] = cmp.mapping.select_next_item(SELECT_BEHAVIOR),
-      -- cancel completion with ctrl+l (moving onwards ->)
-      ['<C-l>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then cmp.abort()
-        else fallback() end
-      end, { 'i', 'c' }),
-      -- confirm completion from luasnip/cmp with Tab
-      ['<Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then cmp.confirm()
-        elseif luasnip.expandable() then luasnip.expand()
-        else fallback() end
-      end, { 'i', 's', 'c' }),
-      -- jump between snippet fields with ctrl+n/p
-      ['<C-n>'] = cmp.mapping(function(fallback)
-        if luasnip.locally_jumpable(1) then luasnip.jump(1)
-        else fallback() end
-      end, { 'i', 's' }),
-      ['<C-p>'] = cmp.mapping(function(fallback)
-        if luasnip.locally_jumpable(-1) then luasnip.jump(-1)
-        else fallback() end
-      end, { 'i', 's' }),
+      ['<C-k>']     = cmp.mapping.select_prev_item(SELECT_BEHAVIOR),
+      ['<C-j>']     = cmp.mapping.select_next_item(SELECT_BEHAVIOR),
+      ['<C-l>']     = mapping_abort,
+      ['<tab>']     = mapping_complete_or_next,
+      ['<C-n>']     = mapping_next,
+      ['<S-tab>']   = mapping_prev,
+      ['<C-p>']     = mapping_prev,
     }, --/cmp.setup.mapping
   } -- /cmp.setup
 
@@ -73,8 +82,10 @@ M.config = function()
       cmp.confirm({select = true})
     end, {'c'}),
     ['<C-p>'] = cmp.mapping(function()
+      -- TODO: prev item in history
     end, {'c'}),
     ['<C-n>'] = cmp.mapping(function()
+      -- TODO: next item in history
     end, {'c'}),
   }
 

@@ -8,5 +8,3 @@ require'lazy'.setup{ -- `require'plugin'.setup{}` called on all nonlazy plugins
   defaults = { lazy = true }, -- lazy-load plugins by default
   spec = { import = 'my.plugins' }, -- plugin specs in ./lua/plugins/
 }
-
-require'my.java' -- java autocmds and lazy-loading

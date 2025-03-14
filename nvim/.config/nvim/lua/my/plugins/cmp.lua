@@ -1,16 +1,10 @@
 return {
-  -- {
-  --   'rafamadriz/friendly-snippets',
-  -- },
   {
     'L3MON4D3/LuaSnip',
-    -- dependencies = {
-    --   'friendly-snippets',
-    -- },
     build = 'make install_jsregexp',
     config = function ()
       require'luasnip.loaders.from_lua'.load{
-        paths = { './snippets/lua' },
+        paths = { './lua/my/snippets' },
       }
     end
   },

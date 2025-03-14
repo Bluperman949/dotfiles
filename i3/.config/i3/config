@@ -29,6 +29,7 @@ set $wsDiscord "11:."
 ########################################
 
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
+exec_always --no-startup-id xset r rate 200 50
 
 # Start Redshift (blue-light filter) in Redmond, WA
 exec --no-startup-id redshift-gtk -l 47.67399:-122.12151 -t 4800:4800

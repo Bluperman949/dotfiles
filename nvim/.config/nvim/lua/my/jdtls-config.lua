@@ -1,6 +1,5 @@
 local JDTLS_HOME = vim.fn.stdpath'data'..'/jdtls'
 local PROJECT_PATH = vim.fs.root(0, {'.git', 'mvnw', 'gradlew'})
-local WORKSPACE_NAME = vim.fn.fnamemodify(PROJECT_PATH, ':t')
 
 return {
   cmd = {
@@ -11,7 +10,7 @@ return {
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
     '-Dlog.protocol=true',
     '-Dlog.level=ALL',
-    '-Xmx1g',
+    '-Xmx512M',
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
@@ -22,7 +21,7 @@ return {
 
     '-configuration', JDTLS_HOME..'/.config',
 
-    '-data', JDTLS_HOME..'/.workspace/'..WORKSPACE_NAME,
+    '-data', JDTLS_HOME..'/.workspace',
     -- '-data', PROJECT_PATH,
   },
   root_dir = PROJECT_PATH,

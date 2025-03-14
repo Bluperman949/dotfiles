@@ -8,7 +8,7 @@ return {
   {
     'tpope/vim-surround',
     event = 'VeryLazy',
-    enabled = function() return not vim.bo.readonly end
+    enabled = function() return not vim.bo.readonly end,
   },
   {
     'Vimjas/vim-python-pep8-indent',

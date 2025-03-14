@@ -4,5 +4,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-ino <buffer> -- _=<space>
-ino <buffer> cu8 []const<space>u8
+ino <buffer> __ _=<space>
+ino <buffer> [c []const<space>
+ino <buffer> [[ [_]
+ino <buffer> {{ .{}<left>
