@@ -3,27 +3,34 @@
 "  Author: Christian Doolittle
 "
 
-no ,; <cmd>lua require'jdtls'.start_or_attach(require'my.jdtls-config')<cr>
-
 "misc
 no <Space> :
 no <A-e> :w<cr>
 ino <A-e> <esc>:w<cr>
-no <C-S-w> <cmd>set wrap!<cr>
-no <C-S-b> <cmd>term cat ~/Documents/ref/chars.txt<cr>
+nno <C-S-w> <cmd>set wrap!<cr>
+nno <C-S-b> <cmd>term cat ~/Documents/ref/chars.txt<cr>
+
+nno ,; <cmd>lua require'jdtls'.start_or_attach(require'my.jdtls-config')<cr>
 
 "text browsing
-no <F4> <cmd>nohlsearch<cr>
-no <C-j> <nop>
+nno <F4> <cmd>nohlsearch<cr>
+nno <C-j> <nop>
 
 no H ^
+sunm H
 no J 10j
+sunm J
 no K 10k
+sunm K
 no L $
+sunm L
 no gL g$
+sunm gL
+
 ino <A-;> <end>
 
 no <A-r> %
+sunm <A-r>
 
 nno w E
 vno w E
@@ -34,23 +41,28 @@ vno e e
 nno E b
 vno E b
 
+nno ) <scrollwheelright>
+nno ( <scrollwheelleft>
+
 "window/file browsing
-no <F9> <cmd>call ClearBufs()<cr>
+nno <F9> <cmd>call ClearBufs()<cr>
 
-no <A-q> <cmd>q<cr>
-no <S-A-q> <cmd>q!<cr>
-no <a-v>d <cmd>vs<cr>
+nno <A-q> <cmd>q<cr>
+nno <S-A-q> <cmd>q!<cr>
+nno <a-v>d <cmd>vs<cr>
 
-no <A-A> <C-w>H
-no <A-S> <C-w>J
-no <A-W> <C-w>K
-no <A-D> <C-w>L
+nno <A-A> <C-w>H
+nno <A-S> <C-w>J
+nno <A-W> <C-w>K
+nno <A-D> <C-w>L
 
-no <A-,> <C-w><
-no <A-.> <C-w>>
+nno <A-,> <C-w><
+nno <A-.> <C-w>>
+nno <A--> <C-w>-
+nno <A-=> <C-w>+
 
-no <A-t> <cmd>tabnew %<cr>
-no <C-tab> gt
+nno <A-t> <cmd>tabnew %<cr>
+nno <C-tab> gt
 
 autocmd BufWinEnter *.txt if &l:buftype ==# 'help'
   \|nno <buffer> q <cmd>q<cr> | endif
@@ -58,10 +70,12 @@ autocmd BufWinEnter *.txt if &l:buftype ==# 'help'
 "plugin integration
 map s ys
 map S yS
+sunmap s
+sunmap S
 
-no \\   <cmd>Lazy<cr>
-no \|\| <cmd>Mason<cr>
-no - <cmd>Oil<cr>
+nno \\   <cmd>Lazy<cr>
+nno \|\| <cmd>Mason<cr>
+nno - <cmd>Oil<cr>
 
 "text editing
 nno <A-j> <cmd>m+1<cr>
