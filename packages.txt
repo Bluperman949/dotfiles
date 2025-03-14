@@ -3,7 +3,6 @@ alsa-utils
 bat
 brightnessctl
 btop
-clang
 escrotum-git
 fd
 feh
@@ -12,7 +11,9 @@ fzf
 git-graph
 grabc
 i3-wm
+jdk17-temurin
 jdk21-temurin
+jdk8-temurin
 kitty
 less
 lightdm
@@ -21,13 +22,11 @@ nano
 neofetch
 neovim
 npm
-pacdep
 picom
 polybar
 python
 python-numpy
 ranger
-rclone
 redshift
 rofi
 starship
@@ -46,3 +45,4 @@ xdg-desktop-portal
 xorg-xinput
 zip
 zsh
+zvm
