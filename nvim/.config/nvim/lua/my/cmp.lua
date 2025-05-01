@@ -30,7 +30,16 @@ M.config = function()
   end, { 'i', 's' })
 
   cmp.setup{
-    window = {},
+    window = {
+      -- completion = {
+      --   border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+      --   winhighlight = 'Normal:CmpPmenu,FloatBorder:Comment',
+      -- },
+      -- documentation = {
+      --   border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+      --   winhighlight = 'Normal:Normal,FloatBorder:Comment',
+      -- },
+    },
     formatting = {
       format = function(_, item)
         if item.menu and #item.menu > 40 then

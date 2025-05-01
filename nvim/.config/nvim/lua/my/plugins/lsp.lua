@@ -1,10 +1,16 @@
 local LSPS = {
-  'lua_ls', 'vimls', 'bashls', 'basedpyright', 'html', 'cssls', 'zls',
+  'lua_ls', 'vimls', 'bashls', 'basedpyright',
+  'html', 'cssls', 'emmet_ls', 'tinymist',
+  'zls',
 }
 local LSP_CONFIGS = {
-  zls = { filetypes = {'zig', 'zon', 'zir'} },
+  zls = { filetypes = {'zig', 'zon'} },
   bashls = { filetypes = {'sh', 'zsh'} },
 }
+
+local function jdt_start_or_attach()
+  require'jdtls'.start_or_attach(require'my.jdtls-config')
+end
 
 return {
   {
@@ -28,29 +34,35 @@ return {
       'mason.nvim',
       'mason-lspconfig.nvim',
       'cmp-nvim-lsp',
+      'tiny-inline-diagnostic.nvim',
     },
     keys = {
-      { 'gr', vim.lsp.buf.rename      },
-      -- fzf-lua handles these now
-      -- { 'gd', vim.lsp.buf.definition  },
-      -- { 'ga', vim.lsp.buf.code_action },
-      -- { 'gu', vim.lsp.buf.references  },
+      { 'gr', vim.lsp.buf.rename },
       { 'g<space>', vim.lsp.buf.hover },
     },
     config = function()
       local lspconfig = require'lspconfig'
-      local capabilities = require'cmp_nvim_lsp'.default_capabilities()
-      for _,i in pairs(LSPS) do
-        local cfg = LSP_CONFIGS[i] or {}
-        cfg.capabilities = capabilities
-        lspconfig[i].setup(cfg)
+      local default_caps = require'cmp_nvim_lsp'.default_capabilities()
+      for _,ls in pairs(LSPS) do
+        local cfg = LSP_CONFIGS[ls] or {}
+        cfg.capabilities = default_caps
+        lspconfig[ls].setup(cfg)
       end
-      -- re-do FileType to auto-start any LSs
-      vim.api.nvim_exec_autocmds('FileType', {})
-
+      vim.lsp.start_client()
     end
   },
   {
     'mfussenegger/nvim-jdtls',
+    ft = { 'java' },
+    dependencies = { 'nvim-dap' },
+    config = function ()
+      vim.api.nvim_create_autocmd({'BufRead'}, {
+        pattern = { '*.java' },
+        callback = jdt_start_or_attach,
+      })
+      jdt_start_or_attach()
+    end,
+    build = function ()
+    end,
   },
 }

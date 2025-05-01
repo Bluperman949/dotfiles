@@ -34,11 +34,6 @@ return {
   }),
 
   -- boilerplate
-  s('main', {
-    t{'public static void main(String[] args) {',
-      '\t'}, i(1), t{'',
-    '}'},
-  }),
   s('class', {
     t'public class ', f(h.srcname, {1}), i(1), t{' {',
       '\t'}, i(2), t{'',

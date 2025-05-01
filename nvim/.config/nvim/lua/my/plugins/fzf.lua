@@ -23,22 +23,25 @@ return {
         blines   = { winopts = { preview = { vertical = 'down:80%' }}},
       }
 
-      map({'n', 'v'}, '<C-f>', '<nop>')
-      map({'n', 'v'}, '<C-f><C-f>', fzf.blines)
-      map({'n', 'v'}, '<C-f><C-r>', fzf.buffers)
-      map({'n', 'v'}, '<C-f><C-o>', fzf.oldfiles)
-      map({'n', 'v'}, '<C-f><C-i>', fzf.files)
-      map({'n', 'v'}, '<C-f><C-p>', fzf.lsp_document_symbols)
-      map({'n', 'v'}, '<C-f><C-p>', fzf.lsp_document_symbols)
-      map({'n', 'v'}, '<C-f><C-g>', fzf.builtin)
+      -- "searching" with `<C-f>`
+      map({'n'}, '<C-f>', '<nop>')
+      map({'n'}, '<C-f><C-f>', fzf.blines)
+      map({'n'}, '<C-f><C-p>', fzf.lsp_document_symbols)
+      map({'n'}, '<C-f><C-b>', fzf.builtin)
 
+      -- navigation with 't'
+      map({'n'}, 'to', fzf.oldfiles)
+      map({'n'}, 'ti', fzf.files)
+      map({'n'}, 'tt', fzf.buffers)
+      map({'n'}, 'tp', fzf.diagnostics_document)
+
+      -- lsp with 'g'
       map({'n', 'v'}, 'gu', fzf.lsp_references)
       map({'n', 'v'}, 'gd', fzf.lsp_definitions)
       map({'n', 'v'}, 'ga', fzf.lsp_code_actions)
+
+      -- dap with 'b'
+      map({'n'}, 'bf', fzf.dap_breakpoints)
     end,
   },
-  {
-    'stevearc/dressing.nvim',
-    event = 'VeryLazy',
-  }
 }
