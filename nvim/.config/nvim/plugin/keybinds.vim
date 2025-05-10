@@ -14,6 +14,8 @@ nno <C-S-b> <cmd>term cat ~/Documents/ref/chars.txt<cr>
 nno <C-S-w> <cmd>set wrap!<cr>
 nno ,; <cmd>lua require'jdtls'.start_or_attach(require'my.jdtls-config')<cr>
 
+nno zff zfaB
+
 "text browsing
 nno <F4> <cmd>nohlsearch<cr>
 nno <C-j> <nop>
