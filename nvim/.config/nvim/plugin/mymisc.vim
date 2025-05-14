@@ -5,12 +5,14 @@
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set listchars=tab:»\ ,eol:󰌑
+nno tw <cmd>set list!<cr>
 
 set termguicolors
 let g:c_syntax_for_h=1
 
 set relativenumber
-set colorcolumn=80,120
+set colorcolumn=80
 set cursorline
 set numberwidth=2
 set signcolumn=no

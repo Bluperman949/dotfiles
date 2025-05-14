@@ -16,13 +16,11 @@ return {
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
     '-jar',
-    '/usr/share/java/jdtls/plugins/'
-    ..'org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
+    '/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar',
 
     '-configuration', JDTLS_HOME..'/.config',
 
     '-data', JDTLS_HOME..'/.workspace',
-    -- '-data', PROJECT_PATH,
   },
   root_dir = PROJECT_PATH,
   settings = {
@@ -33,6 +31,8 @@ return {
     },
   },
   init_options = {
-    bundles = {}
+    bundles = {
+      vim.fn.glob('~/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar', 1),
+    },
   },
 }

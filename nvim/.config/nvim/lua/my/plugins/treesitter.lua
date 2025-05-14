@@ -4,43 +4,25 @@ local TS_LANGS = {
 
 return {
   {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { 'nvim-treesitter' },
-    event = 'VeryLazy',
-    build = ':TSUpdate',
-    config = function ()
-      require'nvim-treesitter.configs'.setup{
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymps = {
-              ['ip'] = '@parameter.inner',
-              ['ap'] = '@parameter.outer',
-              ['in'] = '@number.inner',
-              ['an'] = '@number.outer',
-              ['if'] = '@function.inner',
-              ['af'] = '@function.outer',
-            },
-          },
-        },
-      }
-    end
-  },
-  {
     'nvim-treesitter/nvim-treesitter',
-    -- event = 'VeryLazy',
+    event = 'VeryLazy',
     config = function()
       require'nvim-treesitter.configs'.setup{
         ensure_installed = TS_LANGS,
         highlight = {
           enable = true,
+          disable = {'html', 'vim'}
         },
         indent = {
-          enable = false,
+          enable = true,
         },
         incremental_selection = {
-
+          enable = true,
+          keymaps = {
+            init_selection = 'vv',
+            node_incremental = 'v',
+            node_decremental = 'b',
+          },
         }
       }
     end

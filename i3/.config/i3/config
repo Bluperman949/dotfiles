@@ -51,9 +51,6 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# mount OneDrive via rclone
-exec --no-startup-id rclone --vfs-cache-mode writes mount onedrive: ~/Documents/OneDrive
-
 ########################################
 #               Keybinds               #
 ########################################
@@ -62,7 +59,10 @@ focus_follows_mouse no
 
 # toggle mousepad
 bindsym $mod+m exec --no-startup-id ~/.config/i3/touchpad.sh
+# toggle colemak layout
 bindsym $mod+apostrophe exec --no-startup-id ~/.config/i3/colemak.sh
+# suspend
+bindsym $mod+n exec --no-startup-id systemctl suspend
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
