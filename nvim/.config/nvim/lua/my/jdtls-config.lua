@@ -16,7 +16,7 @@ return {
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
     '-jar',
-    '/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar',
+    vim.fn.glob('/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
 
     '-configuration', JDTLS_HOME..'/.config',
 
