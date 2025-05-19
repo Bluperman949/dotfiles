@@ -22,8 +22,8 @@ nno <C-j> <nop>
 
 ino <A-;> <end>
 no H ^
-no J L
-no K H
+no J <C-e>
+no K <C-y>
 no L $
 no gL g$
 no <A-r> %
