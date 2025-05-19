@@ -2,3 +2,4 @@
 [Default Applications]
 inode/directory=ranger.desktop
 text/*=nvim.desktop
+x-scheme-handler/discord=vesktop.desktop
