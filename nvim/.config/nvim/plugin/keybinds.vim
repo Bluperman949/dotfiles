@@ -45,6 +45,8 @@ vno E b
 
 vno n <esc><cmd>call search('\w')<cr>viw
 vno N o<esc><cmd>call search('\w','b')<cr>viw
+sunm n
+sunm N
 
 nno ) <scrollwheelright>
 nno ( <scrollwheelleft>
