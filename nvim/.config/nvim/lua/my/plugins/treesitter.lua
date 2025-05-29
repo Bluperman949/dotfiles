@@ -13,9 +13,7 @@ return {
           enable = true,
           disable = {'html', 'vim'}
         },
-        indent = {
-          enable = true,
-        },
+        indent = { enable = false },
         incremental_selection = {
           enable = true,
           keymaps = {

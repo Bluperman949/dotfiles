@@ -6,6 +6,7 @@ local LSPS = {
 local LSP_CONFIGS = {
   zls = { filetypes = {'zig', 'zon'} },
   bashls = { filetypes = {'sh', 'zsh'} },
+  emmet_ls = { filetypes = {'html'} },
 }
 
 local function jdt_start_or_attach()
