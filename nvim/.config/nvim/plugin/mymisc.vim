@@ -13,7 +13,7 @@ let g:c_syntax_for_h=1
 
 set relativenumber
 set colorcolumn=80
-set textwidth=80
+set textwidth=79
 set cursorline
 set numberwidth=2
 set signcolumn=no
