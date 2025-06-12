@@ -19,7 +19,7 @@ alias update='yay -Syu'
 alias gitpush='git push --set-upstream origin'
 alias gitt='git status'
 alias gmit='git commit -m '
-alias gog='git-graph -m simple -n 48'
+alias gog='git-graph -m simple -n 40'
 alias gogl='git-graph -m simple'
 
 alias py='python'
