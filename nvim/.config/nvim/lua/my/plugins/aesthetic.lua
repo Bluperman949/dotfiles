@@ -71,6 +71,12 @@ return {
     event = 'VeryLazy',
     dependencies = { 'nvim-web-devicons' },
     config = function ()
+      local luasnip_status = function ()
+        local cur = require'luasnip'.get_active_snip()
+        if cur == nil then return '' end
+        return 'snip('..cur.current_insert..'/'..#cur.insert_nodes..')'
+      end
+
       require('lualine').setup {
         options = {
           icons_enabled = true,
@@ -91,7 +97,7 @@ return {
         sections = {
           lualine_a = {'mode'},
           lualine_b = {'filename'},
-          lualine_c = {'branch', 'diff'},
+          lualine_c = {'branch', 'diff', luasnip_status},
           lualine_x = {'diagnostics', 'lsp_status'},
           lualine_y = {'location', 'progress'},
           lualine_z = {},

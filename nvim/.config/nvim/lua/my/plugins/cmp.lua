@@ -6,6 +6,10 @@ return {
       require'luasnip.loaders.from_lua'.load{
         paths = { './lua/my/snippets' },
       }
+      local ls = require'luasnip'
+      vim.keymap.set({'n'}, 'gs', function ()
+        ls.unlink_current()
+      end)
     end
   },
   {

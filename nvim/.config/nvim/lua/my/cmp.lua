@@ -4,41 +4,68 @@ M.config = function()
   local cmp = require'cmp'
   local ls = require'luasnip'
 
-  local SELECT_BEHAVIOR = { behavior = cmp.SelectBehavior.Select }
-
-  -- close cmp
-  local mapping_abort = cmp.mapping(function(fallback)
+  -- open/close cmp
+  local mapping_toggle = cmp.mapping(function ()
     if cmp.visible() then cmp.abort()
+    else cmp.complete() end
+  end, { 'i', 'c' })
+
+  -- select previous completion
+  local mapping_select_prev = cmp.mapping(function (fallback)
+    if cmp.visible() then cmp.select_prev_item()
     else fallback() end
   end, { 'i', 'c' })
-  -- jump back in snippet
-  local mapping_prev = cmp.mapping(function(fallback)
-    if ls.locally_jumpable(-1) then ls.jump(-1)
+  -- select next completion
+  local mapping_select_next = cmp.mapping(function (fallback)
+    if cmp.visible() then cmp.select_next_item()
     else fallback() end
-  end, { 'i', 's' })
-  -- expand completion or jump forward
-  local mapping_complete_or_next = cmp.mapping(function(fallback)
+  end, { 'i', 'c' })
+  -- confirm selection
+  local mapping_confirm = cmp.mapping(function (fallback)
     if cmp.visible() then cmp.confirm()
-    elseif ls.expandable() then ls.expand()
-    elseif ls.locally_jumpable() then ls.jump(1)
     else fallback() end
-  end, { 'i', 's', 'c' })
-  -- just jump forward
-  local mapping_next = cmp.mapping(function(fallback)
-    if ls.locally_jumpable(1) then ls.jump(1)
-    else fallback() end
+  end, { 'i', 'c' })
+
+  -- jump backwards in snippet
+  local mapping_jump_backwards = cmp.mapping(function ()
+    if ls.locally_jumpable(-1) then ls.jump(-1) end
   end, { 'i', 's' })
+  -- jump forwards in snippet
+  local mapping_jump_forwards = cmp.mapping(function ()
+    if ls.locally_jumpable(1) then ls.jump(1) end
+  end, { 'i', 's' })
+
+  local MAPPINGS_INSERT = {
+    -- open completion or abort completion with Ctrl+Space
+    ['<C-space>'] = mapping_toggle,
+    -- select previous and next completion with Ctrl+K and Ctrl+J
+    ['<C-k>'] = mapping_select_prev,
+    ['<C-j>'] = mapping_select_next,
+    -- confirm selection with Tab/Ctrl+I
+    ['<tab>'] = mapping_confirm,
+    -- jump forwards and backwards in snippet with Ctrl+N and Ctrl+P
+    ['<C-n>'] = mapping_jump_forwards,
+    ['<C-p>'] = mapping_jump_backwards,
+  }
+
+  local MAPPINGS_CMDLINE = {
+    -- same as insert mode, but no snippets
+    ['<C-space>'] = mapping_toggle,
+    ['<C-k>'] = mapping_select_prev,
+    ['<C-j>'] = mapping_select_next,
+    ['<tab>'] = mapping_confirm,
+  }
 
   cmp.setup{
     window = {
-      -- completion = {
-      --   border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-      --   winhighlight = 'Normal:CmpPmenu,FloatBorder:Comment',
-      -- },
-      -- documentation = {
-      --   border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-      --   winhighlight = 'Normal:Normal,FloatBorder:Comment',
-      -- },
+      completion = {
+        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+        winhighlight = 'Normal:CmpPmenu,FloatBorder:Comment',
+      },
+      documentation = {
+        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+        winhighlight = 'Normal:Normal,FloatBorder:Comment',
+      },
     },
     formatting = {
       format = function(_, item)
@@ -58,45 +85,15 @@ M.config = function()
     },
     sources = cmp.config.sources{
       { name = 'nvim_lsp' },
+      { name = 'luasnip'  },
       { name = 'path'     },
       { name = 'buffer'   },
-      { name = 'luasnip'  },
     },
     experimental = { ghost_text = true, },
     completion = { completeopt = 'noinsert', },
 
-    mapping = cmp.mapping.preset.insert{
-      ['<C-space>'] = cmp.mapping.complete(),
-      ['<C-k>']     = cmp.mapping.select_prev_item(SELECT_BEHAVIOR),
-      ['<C-j>']     = cmp.mapping.select_next_item(SELECT_BEHAVIOR),
-      ['<C-l>']     = mapping_abort,
-      ['<tab>']     = mapping_complete_or_next,
-      ['<C-n>']     = mapping_next,
-      ['<S-tab>']   = mapping_prev,
-      ['<C-p>']     = mapping_prev,
-    }, --/cmp.setup.mapping
+    mapping = MAPPINGS_INSERT,
   } -- /cmp.setup
-
-  MAPPINGS_CMDLINE = cmp.mapping.preset.cmdline{
-    ['<C-k>'] = cmp.mapping(function()
-      cmp.select_prev_item()
-    end, {'c'}),
-    ['<C-j>'] = cmp.mapping(function()
-      cmp.select_next_item()
-    end, {'c'}),
-    ['<C-l>'] = cmp.mapping(function()
-      cmp.close()
-    end, {'c'}),
-    ['<Tab>'] = cmp.mapping(function()
-      cmp.confirm({select = true})
-    end, {'c'}),
-    ['<C-p>'] = cmp.mapping(function()
-      -- TODO: prev item in history
-    end, {'c'}),
-    ['<C-n>'] = cmp.mapping(function()
-      -- TODO: next item in history
-    end, {'c'}),
-  }
 
   cmp.setup.cmdline({ '/', '?' }, {
     sources = {
