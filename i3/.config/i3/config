@@ -28,6 +28,7 @@ set $wsDiscord "11:."
 #               Start-up               #
 ########################################
 
+# Keyboard customizations
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec_always --no-startup-id xset r rate 200 50
 
