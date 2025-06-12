@@ -1,13 +1,6 @@
 '$schema' = 'https://starship.rs/config-schema.json'
 add_newline = false
 
-# [▐](bg:color_red)\
-# [](fg:color_fg3 bg:color_red)\
-# [](bg:color_fg3 fg:color_purple)\
-# [](bg:color_purple fg:color_bg2)\
-# [](bg:color_bg2 fg:color_bg)\
-# [→ ](fg:color_bg2)\
-
 format = """
 [╭](fg:color_bg2)\
 $username\
@@ -47,7 +40,7 @@ format = '[$user]($style)'
 [directory]
 style = 'bg:color_bg2 fg:color_fg1'
 format = '[$path ]($style)'
-truncation_length = 3
+truncation_length = 4
 truncation_symbol = '…/'
 
 [directory.substitutions]
@@ -55,7 +48,6 @@ truncation_symbol = '…/'
 'Downloads' = ' '
 'Pictures' = '󰋩 '
 '.dotfiles' = ' '
-'~/.config' = '~/ '
 
 [git_branch]
 symbol = ' '
