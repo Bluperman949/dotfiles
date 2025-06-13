@@ -1,0 +1,71 @@
+'$schema' = 'https://starship.rs/config-schema.json'
+add_newline = false
+
+format = """
+[╭](fg:color_bg2)\
+$username\
+[╶](fg:color_bg2)\
+[ ](bg:color_bg2 fg:color_bg0)\
+$directory\
+[](fg:color_bg2 bg:color_bg0)\
+[(╴$git_branch $git_status╶)](fg:color_bg2)\
+[╴](fg:color_bg2)\
+$time\
+\n[╰─](fg:color_bg2)\
+$character
+"""
+
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_fg1 = '#ebdbb2'
+color_fg4 = '#a89984'
+color_bg0 = '#282828'
+color_bg2 = '#504945'
+color_blue = '#458588'
+color_aqua = '#689d6a'
+color_green = '#98971a'
+color_orange = '#d65d0e'
+color_purple = '#b16286'
+color_red = '#cc241d'
+color_yellow = '#d79921'
+
+[username]
+show_always = true
+style_user = 'fg:color_aqua bg:color_bg0'
+style_root = 'fg:color_purple bg:color_bg0'
+format = '[$user]($style)'
+
+[directory]
+style = 'bg:color_bg2 fg:color_fg1'
+format = '[$path ]($style)'
+truncation_length = 4
+truncation_symbol = '…/'
+
+[directory.substitutions]
+'Documents' = '󰈙'
+'Downloads' = ' '
+'Pictures' = '󰋩 '
+'.dotfiles' = ' '
+
+[git_branch]
+symbol = ' '
+style = 'fg:color_purple'
+format = '[[$symbol$branch](bg:color_bg0 fg:color_purple)]($style)'
+
+[git_status]
+style = 'fg:color_purple'
+format = '[($all_status$ahead_behind)]($style)'
+
+[time]
+disabled = false
+style = 'fg:color_fg4'
+format = '[$time]($style)'
+time_format = '%I:%M:%S'
+utc_time_offset = '-8'
+
+[character]
+success_symbol = '[](fg:color_green)'
+error_symbol   = '[](fg:color_red)'
+vimcmd_symbol  = '[](fg:color_purple)'

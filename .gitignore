@@ -1,6 +1,4 @@
-nvim/.config/nvim/lazy-lock.json
-nvim/.config/nvim/.luarc.json
-nvim/.config/nvim/lua/my/plugins/dev.lua
-kitty/.config/kitty/navigate_kitty.py
-kitty/.config/kitty/pass_keys.py
+nvim/lazy-lock.json
+nvim/.luarc.json
+nvim/lua/my/plugins/dev.lua
 **/desktop.ini
