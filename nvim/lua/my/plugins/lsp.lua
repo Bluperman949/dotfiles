@@ -1,14 +1,3 @@
-local LSPS = {
-  'lua_ls', 'vimls', 'bashls', 'basedpyright',
-  'html', 'cssls', 'emmet_ls', 'tinymist',
-  'zls',
-}
-local LSP_CONFIGS = {
-  zls = { filetypes = {'zig', 'zon'} },
-  bashls = { filetypes = {'sh', 'zsh'} },
-  emmet_ls = { filetypes = {'html'} },
-}
-
 local function jdt_start_or_attach()
   require'jdtls'.start_or_attach(require'my.jdtls-config')
 end
@@ -17,16 +6,15 @@ return {
   {
     'williamboman/mason.nvim',
     -- loaded as dependency
-    config = function()
-      require'mason'.setup{}
-    end,
+    opts = {},
   },
   {
     'williamboman/mason-lspconfig.nvim',
     -- loaded as dependency
-    config = function()
-      require'mason-lspconfig'.setup{ ensure_installed = LSPS }
-    end,
+    opts = {
+      -- auto-start LSPs with default settings
+      automatic_enable = true,
+    },
   },
   {
     'neovim/nvim-lspconfig',
@@ -41,20 +29,12 @@ return {
       { 'gr', vim.lsp.buf.rename },
       { 'g<space>', vim.lsp.buf.hover },
     },
-    config = function()
-      local lspconfig = require'lspconfig'
-      local default_caps = require'cmp_nvim_lsp'.default_capabilities()
-      for _,ls in pairs(LSPS) do
-        local cfg = LSP_CONFIGS[ls] or {}
-        cfg.capabilities = default_caps
-        lspconfig[ls].setup(cfg)
-      end
-      vim.lsp.start_client()
+    config = function ()
     end
   },
   {
     'mfussenegger/nvim-jdtls',
-    ft = { 'java' },
+    ft = { 'java', 'kotlin', 'gradle' },
     dependencies = { 'nvim-dap' },
     config = function ()
       vim.api.nvim_create_autocmd({'BufRead'}, {
@@ -62,8 +42,6 @@ return {
         callback = jdt_start_or_attach,
       })
       jdt_start_or_attach()
-    end,
-    build = function ()
     end,
   },
 }
