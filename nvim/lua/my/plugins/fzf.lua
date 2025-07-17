@@ -24,21 +24,23 @@ return {
       }
 
       -- "searching" with `<C-f>`
-      map({'n'}, '<C-f>', '<nop>')
+      map({'n'}, '<C-f>', '<nop>') -- stop <C-f><any> from timing out
       map({'n'}, '<C-f><C-f>', fzf.blines)
-      map({'n'}, '<C-f><C-p>', fzf.lsp_document_symbols)
       map({'n'}, '<C-f><C-b>', fzf.builtin)
 
       -- navigation with 't'
       map({'n'}, 'to', fzf.oldfiles)
       map({'n'}, 'ti', fzf.files)
       map({'n'}, 'tt', fzf.buffers)
-      map({'n'}, 'tp', fzf.diagnostics_document)
+
+      -- holdover from `trouble.nvim`. "tp" for "Trouble Problems"
+      map({'n'}, 'tp', fzf.diagnostics_workspace)
 
       -- lsp with 'g'
-      map({'n', 'v'}, 'gu', fzf.lsp_references)
-      map({'n', 'v'}, 'gd', fzf.lsp_definitions)
-      map({'n', 'v'}, 'ga', fzf.lsp_code_actions)
+      map({'n'}, 'gu', fzf.lsp_references)
+      map({'n'}, 'gd', fzf.lsp_definitions)
+      map({'n'}, 'ga', fzf.lsp_code_actions)
+      map({'n'}, 'gf', fzf.lsp_document_symbols)
 
       -- dap with 'b'
       map({'n'}, 'bf', fzf.dap_breakpoints)
