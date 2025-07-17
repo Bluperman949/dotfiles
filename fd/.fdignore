@@ -1,0 +1,15 @@
+# generic hidden stuff
+.*
+*cache*
+*.log
+
+# let me see my dots, though
+!.dotfiles
+
+# output folders
+bin/
+build/
+generated/
+
+# other stuff that shouldn't be searched
+gradle/
