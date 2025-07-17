@@ -13,6 +13,7 @@ ino <A-e> <esc>:w<cr>
 nno <C-S-b> <cmd>term cat ~/Documents/ref/chars.txt<cr>
 nno <C-S-w> <cmd>set wrap!<cr>
 nno ,; <cmd>lua require'jdtls'.start_or_attach(require'my.jdtls-config')<cr>
+nno ,l <cmd>LspInfo<cr>
 
 nno zff zfaB
 
@@ -115,21 +116,16 @@ nmap daa ggdG
 
 nmap U <C-r>
 
-ino <C-;> <end>;
+ino `` ```<cr>```<up><end>
 ino <A-'> '
 ino <A-S-'> "
 nno c<space> ciw<space><esc>
 
-ino <A-9> §
-ino <A-0> °
 ino <A-r> %
 ino <A-s> <backspace>
 ino <A-d> <del>
 
 nno <C-S-i> <cmd>%s/    /  /g<cr><cmd>nohlsearch<cr>
-
-nmap gm gc
-nmap gmm gcc
 
 "functions
 nno <F9> <cmd>call ClearBufs()<cr>
