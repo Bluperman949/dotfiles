@@ -12,9 +12,7 @@ alias la='ls -A --color=always'
 alias cu='cd ..'
 alias tree='tree -Ca -I .git --filelimit=40'
 
-alias install='yay -S'
-alias uninstall='yay -Rs'
-alias update='yay -Syu'
+alias p='sudo pacman'
 
 alias gitpush='git push --set-upstream origin'
 alias gitt='git status'
