@@ -1,7 +1,7 @@
 //@theme "/usr/share/rofi/themes/gruvbox-light.rasi"
 configuration {
 
-  modes: "drun,run,window";
+  modes: "run,window";
   font: "JetBrainsMonoNerdFont SemiBold 16";
   show-icons: true;
   drun-show-actions: false;
