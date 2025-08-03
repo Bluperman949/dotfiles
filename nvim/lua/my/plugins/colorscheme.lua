@@ -6,5 +6,9 @@ return {
     config = function ()
       vim.cmd[[colorscheme gruvbox]]
     end,
-  }
+  },
+  {
+    'nordtheme/vim',
+    lazy = false,
+  },
 }
