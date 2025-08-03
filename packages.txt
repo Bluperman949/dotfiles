@@ -16,7 +16,7 @@ jdk21-temurin
 jdk8-temurin
 kitty
 less
-lightdm
+ly
 man-db
 nano
 neofetch
