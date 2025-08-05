@@ -10,17 +10,6 @@ return {
       local fzf = require'fzf-lua'
       fzf.setup{
         'default',
-        winopts = {
-          row = 1, col = 0,
-          width = 1, height = 0.8,
-          border   = {'╶', '─', '╴', ' ', '╴', '─', '╶', ' '},
-          preview = {
-            border = { '',  '',  '', ' ', '╴', '─', '╶', ' '},
-          },
-        },
-        files    = { winopts = { preview = { vertical = 'down:20%' }}},
-        oldfiles = { winopts = { preview = { vertical = 'down:20%' }}},
-        blines   = { winopts = { preview = { vertical = 'down:80%' }}},
       }
 
       -- "searching" with `<C-f>`
@@ -34,7 +23,9 @@ return {
       map({'n'}, 'tt', fzf.buffers)
 
       -- holdover from `trouble.nvim`. "tp" for "Trouble Problems"
-      map({'n'}, 'tp', fzf.diagnostics_workspace)
+      map({'n'}, 'tp', fzf.diagnostics_document)
+      map({'n'}, 'tP', fzf.diagnostics_workspace)
+      map({'n'}, 'tq', fzf.quickfix)
 
       -- lsp with 'g'
       map({'n'}, 'gu', fzf.lsp_references)
@@ -44,6 +35,9 @@ return {
 
       -- dap with 'b'
       map({'n'}, 'bf', fzf.dap_breakpoints)
+
+      -- shut up that one error
+      fzf.register_ui_select()
     end,
   },
 }
