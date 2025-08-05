@@ -42,7 +42,7 @@ exec --no-startup-id picom
 exec --no-startup-id feh --bg-scale ~/wallpaper.png
 
 # start Polybar to display information about the system
-exec --no-startup-id polybar -r
+exec --no-startup-id polybar
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
