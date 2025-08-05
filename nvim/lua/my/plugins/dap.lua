@@ -13,20 +13,21 @@ return {
     end
   },
   {
-    'theHamsta/nvim-dap-virtual-text',
+    'jay-babu/mason-nvim-dap.nvim',
     config = function ()
-      require'nvim-dap-virtual-text'.setup{
+      require'mason-nvim-dap'.setup{
+        handlers = {},
+        ensure_installed = {
+          'java-debug',
+          'python',
+        },
       }
     end
   },
   {
-    'jay-babu/mason-nvim-dap.nvim',
+    'theHamsta/nvim-dap-virtual-text',
     config = function ()
-      require'mason-nvim-dap'.setup{
-        ensure_installed = {
-          'java-debug',
-          'python',
-        }
+      require'nvim-dap-virtual-text'.setup{
       }
     end
   },
