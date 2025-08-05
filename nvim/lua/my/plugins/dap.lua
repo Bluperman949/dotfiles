@@ -10,7 +10,6 @@ return {
       vim.keymap.set({'n'}, 'bb', dap.toggle_breakpoint)
       vim.keymap.set({'n'}, 'bn', dap.continue)
       vim.keymap.set({'n'}, 'bi', dap.step_into)
-      vim.keymap.set({'n'}, 'bb', dap.set_breakpoint)
     end
   },
   {
