@@ -23,6 +23,7 @@ neofetch
 neovim
 npm
 picom
+pinta
 polybar
 python
 python-numpy
