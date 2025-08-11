@@ -5,7 +5,7 @@ format = """
 [╭](fg:color_bg2)\
 $username\
 [╶](fg:color_bg2)\
-[ ](bg:color_bg2 fg:color_bg0)\
+[◢](bg:color_bg0 fg:color_bg2)\
 $directory\
 [](fg:color_bg2 bg:color_bg0)\
 [(╴$git_branch $git_status╶)](fg:color_bg2)\
@@ -39,7 +39,7 @@ format = '[$user]($style)'
 
 [directory]
 style = 'bg:color_bg2 fg:color_fg1'
-format = '[$path ]($style)'
+format = '[ $path ]($style)'
 truncation_length = 4
 truncation_symbol = '…/'
 
