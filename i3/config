@@ -81,12 +81,12 @@ bindsym $mod+Return exec --no-startup-id kitty -1; fullscreen disable
 bindsym $mod+Shift+Return exec --no-startup-id kitty --class=runner -1
 for_window [class="runner"] floating enable, resize set width 1400 height 1000, move position center
 
-# Keybinds for common apps
-bindsym $mod+o exec --no-startup-id firefox
-bindsym $mod+i exec --no-startup-id kitty nvim
+# open my picker (replacement for dmenu/rofi)
+bindcode $mod+65 exec --no-startup-id kitty --class=picker -1 ~/.config/i3/picker.sh
+for_window [class="picker"] floating enable, resize set width 1200 height 800, move position center, border pixel 0
 
-# start rofi (replacement for dmenu)
-bindcode $mod+65 exec --no-startup-id rofi -show
+# start firefox
+bindsym $mod+o exec --no-startup-id firefox
 
 # take screenshots/record with... uh.. "escrotum".
 bindsym $mod+x exec --no-startup-id escrotum -C
