@@ -6,9 +6,9 @@
 "misc
 no <Space> :
 
-nno <A-e> :w<cr>
-nno <C-s> :w<cr>
-ino <A-e> <esc>:w<cr>
+nno <A-e> :up<cr>
+nno <C-s> :up<cr>
+ino <A-e> <esc>:up<cr>
 
 nno <C-S-b> <cmd>term cat ~/Documents/ref/chars.txt<cr>
 nno <C-S-w> <cmd>set wrap!<cr>
