@@ -6,7 +6,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set listchars=tab:»\ ,eol:󰌑
-nno tw <cmd>set list!<cr>
 
 set termguicolors
 let g:c_syntax_for_h=1

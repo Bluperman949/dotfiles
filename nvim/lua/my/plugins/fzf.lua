@@ -33,8 +33,8 @@ return {
       map({'n'}, 'ga', fzf.lsp_code_actions)
       map({'n'}, 'gf', fzf.lsp_document_symbols)
 
-      -- dap with 'b'
-      map({'n'}, 'bf', fzf.dap_breakpoints)
+      -- dap with 'gb'
+      map({'n'}, 'gbf', fzf.dap_breakpoints)
 
       -- shut up that one error
       fzf.register_ui_select()

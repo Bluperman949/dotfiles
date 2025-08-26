@@ -1,62 +1,51 @@
 "
 "  keybinds.vim
 "  Author: Christian Doolittle
+"  A completely unorganized set of bindings that tie together my nvim setup.
 "
 
-"misc
+" first bind I ever wrote... colon is annoying
 no <Space> :
 
+" write (update) easily
 nno <A-e> :up<cr>
 nno <C-s> :up<cr>
 ino <A-e> <esc>:up<cr>
 
-nno <C-S-b> <cmd>term cat ~/Documents/ref/chars.txt<cr>
-nno <C-S-w> <cmd>set wrap!<cr>
+" hey guys, how do I exit vim?
+nno <A-q> :q<cr>
+
+" lsp debugging stuff
 nno ,; <cmd>lua require'jdtls'.start_or_attach(require'my.jdtls-config')<cr>
 nno ,l <cmd>LspInfo<cr>
 
+" fold blocks easily
 nno zff zfaB
 
-"text browsing
-nno <F4> <cmd>nohlsearch<cr>
-nno <C-j> <nop>
+" toggle invis chars + wrapping with 't'
+nno ts <cmd>set list!<cr>
+nno tw <cmd>set wrap!<cr>
 
-ino <A-;> <end>
-no H ^
-no J <C-e>
-no K <C-y>
-no L $
-no gL g$
-no <A-r> %
+" nohlsearch with F4
+nno <F4> <cmd>nohlsearch<cr>
+
+" easier home/end wth H/L/;
+imap <A-;> <end>
+map H ^
+map L $
+map gL g$
 sunm H
-sunm J
-sunm K
 sunm L
 sunm gL
-sunm <A-r>
 
-nno w E
-vno w E
-nno W B
-vno W B
-nno e e
-vno e e
-nno E b
-vno E b
+" easier scrolling
+nno J <C-e>
+nno K <C-y>
 
-vno n <esc><cmd>call search('\w')<cr>viw
-vno N o<esc><cmd>call search('\w','b')<cr>viw
-sunm n
-sunm N
-
-nno ) <scrollwheelright>
 nno ( <scrollwheelleft>
+nno ) <scrollwheelright>
 
-"window/file browsing
-nno <A-q> <cmd>q<cr>
-nno <S-A-q> <cmd>q!<cr>
-nno <a-v>d <cmd>vs<cr>
-
+" match window navigation to my WM's binds, WASD-style
 nno <A-a> <C-w>h
 nno <A-s> <C-w>j
 nno <A-w> <C-w>k
@@ -67,29 +56,28 @@ nno <A-S> <C-w>J
 nno <A-W> <C-w>K
 nno <A-D> <C-w>L
 
+" easily resize windows
 nno <A-,> <C-w><
 nno <A-.> <C-w>>
 nno <A--> <C-w>-
 nno <A-=> <C-w>+
 
+" press 'q' to exit help pages without accidentally closing my main window
 autocmd BufWinEnter *.txt exec
   \ "if &l:buftype ==# 'help' | nno <buffer> q <cmd>q<cr> | endif"
 
-"plugin integration
+" I don't use select mode - replace with vim-surround
 map s ys
 map S yS
-sunmap s
-sunmap S
+sunm s
+sunm S
 
+" plugin screens
 nno \\   <cmd>Lazy<cr>
 nno \|\| <cmd>Mason<cr>
 nno - <cmd>Oil<cr>
 
-nno n <nop>
-nno N <nop>
-nno nf n
-nno bf N
-
+" unmap default lsp binds
 try
   xunmap gra
   nunmap gra
@@ -98,36 +86,46 @@ try
   nunmap grn
 catch /No such mapping/ | endtry
 
-"text editing
+" move lines up and down, vscode-style
 nno <A-j> <cmd>m+1<cr>
 nno <A-k> <cmd>m-2<cr>
+
+" quick find+replace, vscode-style
 nno <F2> "ryiw:%s/<C-r>r//g<left><left>
 vno <F2> "ry:%s/<C-r>r//g<left><left>
 
-nno mj A,<cr>
-nno ml A,<left><cr>
-no mk J
-sunmap mk
+" expand/minify curly-brace one-liners
 nno m1 vaBJ
-nno m2 $<left>r<cr>%<right>r<cr>$
+nno m2 $hr<cr>%lr<cr>$
 
-nmap yaa ggyG
-nmap daa ggdG
+" make Join accessible (J is remapped above)
+nno <C-j> J
 
+" redo is the opposite of undo
 nmap U <C-r>
 
+" auto markdown code block, immune to autopairs
 ino `` ```<cr>```<up><end>
+
+" autopairs-immune quotes
 ino <A-'> '
 ino <A-S-'> "
+
+" replace word (eg. a big indent) with space
 nno c<space> ciw<space><esc>
 
+" save my finger when typing '%'
+no <A-r> %
 ino <A-r> %
-ino <A-s> <backspace>
-ino <A-d> <del>
+sunm <A-r>
 
+" write escape character
+ino <A-[> <C-v><esc>
+
+" change a file with 4-space indentation to 2-space
 nno <C-S-i> <cmd>%s/    /  /g<cr><cmd>nohlsearch<cr>
 
-"functions
+" close all non-active buffers
 nno <F9> <cmd>call ClearBufs()<cr>
 function! ClearBufs()
   let bufs = nvim_list_bufs()
