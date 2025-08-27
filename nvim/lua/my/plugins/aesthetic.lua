@@ -7,7 +7,7 @@ return {
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     -- loaded as dependency by nvim-lspconfig
-    config = function()
+    config = function ()
       require'tiny-inline-diagnostic'.setup{
         preset = "powerline",
       }

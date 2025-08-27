@@ -1,6 +1,6 @@
 local M = {}
 
-M.config = function()
+M.config = function ()
   local cmp = require'cmp'
   local ls = require'luasnip'
 
