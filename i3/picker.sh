@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export wins=$(
-  wmctrl -lx | sed -E 's%.*archlinux%[95m [0m%'
+  wmctrl -lx | sed -E 's%.{14}\w+\.\w+\s+\w+%[95m [0m%'
 )
 export cmds=$(
   printf "[92m [0m %s\n" $(ls -r /usr/bin)
