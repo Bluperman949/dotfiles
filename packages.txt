@@ -44,6 +44,7 @@ wmctrl
 xclip
 xdg-desktop-portal
 xorg-xinput
+xorg-xauth
 zip
 zsh
 zvm
