@@ -27,5 +27,5 @@ pick=${pick:3}
 if   [[ $tchar == ' ' ]]; then $pick
 elif [[ $tchar == ' ' ]]; then wmctrl -a "$pick"
 elif [[ $tchar == ' ' ]]; then
-  ( trap '' HUP; gtk-launch "$pick" >/dev/null 2>&1 ) &
+  sh -c "( trap '' HUP; gtk-launch $pick >/dev/null 2>&1 ) &"
 fi
