@@ -5,6 +5,7 @@ return {
     priority = 1000,
     config = function ()
       vim.cmd[[colorscheme gruvbox]]
+      vim.cmd[[hi link Delimiter GruvboxFg3]]
     end,
   },
   {
