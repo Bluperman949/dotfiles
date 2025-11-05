@@ -48,3 +48,5 @@ xorg-xauth
 zip
 zsh
 zvm
+fcitx
+fcitx-configtool
