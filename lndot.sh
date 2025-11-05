@@ -53,6 +53,9 @@ for module in $@; do
     for file in $(ls -A -I 'setup.sh' -I '.lndot'); do
       makelink $PWD/$file $dest/$file
     done
+  # the ! char means "don't link anything"
+  elif [[ ${dest:0:1} == ! ]]; then
+    echo "[37mThis module should not be linked. Skipping it.[0m"
   else
     # link the whole folder
     makelink $PWD $dest
