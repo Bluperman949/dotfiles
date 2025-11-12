@@ -88,6 +88,7 @@ M.config = function ()
       { name = 'luasnip'  },
       { name = 'path'     },
       { name = 'buffer'   },
+      { name = 'lazydev', group_index = 0 },
     },
     experimental = { ghost_text = true, },
     completion = { completeopt = 'noinsert', },

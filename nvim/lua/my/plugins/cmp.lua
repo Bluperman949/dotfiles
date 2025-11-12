@@ -32,7 +32,19 @@ return {
       'cmp-buffer',
       'cmp_luasnip',
       'nvim-autopairs',
+      'lazydev.nvim',
     },
     config = require'my.cmp'.config,
+  },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    config = function ()
+      require'lazydev'.setup{
+        library = {
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      }
+    end,
   },
 }
