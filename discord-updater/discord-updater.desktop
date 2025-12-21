@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Discord Updater
+StartupWMClass=discord-ptb
+Comment=Update Discord PTB from the AUR before running it
+Exec=sh -c "/home/$USER/.dotfiles/discord-updater/update.sh"
+Icon=discord
+Type=Application
+Categories=Network;InstantMessaging;
+Path=/usr/bin
