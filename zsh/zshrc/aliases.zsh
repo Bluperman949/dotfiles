@@ -22,6 +22,8 @@ alias gogl='git-graph -m simple'
 
 alias py='python'
 alias gw='./gradlew'
+alias zb='zig build'
+alias zbl='zig build -l'
 
 alias vconf='cd ~/.config/nvim; nvim'
 

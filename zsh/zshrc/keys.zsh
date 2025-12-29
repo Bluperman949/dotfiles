@@ -1,4 +1,4 @@
-bindkey -v
+bindkey -v # vim-style binding preset
 
 bindkey '^[[H' beginning-of-line  # home
 bindkey '^[[F' end-of-line        # end
@@ -12,9 +12,14 @@ bindkey '^P' up-line-or-history
 bindkey '^N' down-line-or-history
 
 # unbind easy accidental presses
-bindkey -r '^K' 
-bindkey -r '^J' 
-bindkey -r '^H' 
+bindkey -r '^K'
+bindkey -r '^J'
+bindkey -r '^H'
 bindkey -M vicmd -r '~'
 
 export KEYTIMEOUT=1
+
+# C-z suspends, make C-a resume
+function Fg { fg; zle accept-line }
+zle -N Fg
+bindkey '^Z' Fg
