@@ -2,45 +2,51 @@
 add_newline = true
 
 format = """
-[╭](fg:color_bg2)\
+[╭](dark)\
 $username\
-[╶](fg:color_bg2)\
-[◢](bg:color_bg0 fg:color_bg2)\
+$hostname\
+[╶](dark)\
+[◢](dark)\
 $directory\
-[](fg:color_bg2 bg:color_bg0)\
-[(╴$git_branch $git_status╶)](fg:color_bg2)\
-[╴](fg:color_bg2)\
+[](dark)\
+[(╴$git_branch $git_status╶)](dark)\
+[╴](dark)\
 $time\
-\n[╰─](fg:color_bg2)\
+\n[╰─](dark)\
 $character
 """
 
 palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
-color_fg1 = '#ebdbb2'
-color_fg4 = '#a89984'
-color_bg0 = '#282828'
-color_bg2 = '#504945'
-color_blue = '#458588'
-color_aqua = '#689d6a'
-color_green = '#98971a'
-color_orange = '#d65d0e'
-color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
+white = '#ebdbb2'
+gray = '#a89984'
+black = '#282828'
+dark = '#504945'
+blue = '#458588'
+cyan = '#689d6a'
+green = '#98971a'
+orange = '#d65d0e'
+purple = '#b16286'
+red = '#cc241d'
+yellow = '#d79921'
 
 [username]
 show_always = true
-style_user = 'fg:color_aqua bg:color_bg0'
-style_root = 'fg:color_purple bg:color_bg0'
+style_user = 'cyan'
+style_root = 'red'
 format = '[$user]($style)'
 
+[hostname]
+ssh_only = true
+style = 'gray'
+format = '[@](dark)[$hostname]($style)'
+
 [directory]
-style = 'bg:color_bg2 fg:color_fg1'
+style = 'bg:dark fg:white'
 format = '[ $path ]($style)'
-truncation_length = 4
+truncate_to_repo = true
+truncation_length = 5
 truncation_symbol = '…/'
 
 [directory.substitutions]
@@ -51,21 +57,21 @@ truncation_symbol = '…/'
 
 [git_branch]
 symbol = ' '
-style = 'fg:color_purple'
-format = '[[$symbol$branch](bg:color_bg0 fg:color_purple)]($style)'
+style = 'purple'
+format = '[$symbol$branch]($style)'
 
 [git_status]
-style = 'fg:color_purple'
-format = '[($all_status$ahead_behind)]($style)'
+style = 'purple'
+format = '[$all_status$ahead_behind]($style)'
 
 [time]
 disabled = false
-style = 'fg:color_fg4'
+style = 'gray'
 format = '[$time]($style)'
 time_format = '%I:%M:%S'
 utc_time_offset = '-8'
 
 [character]
-success_symbol = '[](fg:color_green)'
-error_symbol   = '[](fg:color_red)'
-vimcmd_symbol  = '[](fg:color_purple)'
+success_symbol = '[](green)'
+error_symbol   = '[](red)'
+vimcmd_symbol  = '[](purple)'
