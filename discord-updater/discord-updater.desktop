@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Discord Updater
-StartupWMClass=discord-ptb
+StartupWMClass=discord
 Comment=Update Discord PTB from the AUR before running it
 Exec=sh -c "/home/$USER/.dotfiles/discord-updater/update.sh"
 Icon=discord

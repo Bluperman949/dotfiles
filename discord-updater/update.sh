@@ -1,2 +1,2 @@
-yay -Qu discord-ptb && kitty --class=runner sh -c 'yay -S discord-ptb --noconfirm; sudo vencordinstallercli'
-discord-ptb
+pacman -Qu discord && kitty --class=runner sh -c 'sudo pacman -S discord --noconfirm; sudo vencordinstallercli'
+discord
