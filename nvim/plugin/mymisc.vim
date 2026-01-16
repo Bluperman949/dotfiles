@@ -15,9 +15,10 @@ set colorcolumn=80
 set textwidth=79
 set cursorline
 set numberwidth=2
-set signcolumn=no
+set signcolumn=yes:1
 set linebreak
 set nowrap
+set splitright
 
 set clipboard=unnamedplus
 
@@ -25,5 +26,6 @@ augroup mymisc
   autocmd!
   au ColorScheme gruvbox hi Folded gui=italic guibg=#282828
   au WinEnter *.* if winwidth('.')<82 | exe 'norm 82|' | endif
-  au TermOpen * startinsert
+  au TermOpen term://* startinsert
 augroup END
+
