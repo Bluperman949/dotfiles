@@ -29,7 +29,6 @@ python
 python-numpy
 ranger
 redshift
-rofi
 starship
 tree
 ttf-jetbrains-mono-nerd
