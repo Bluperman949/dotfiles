@@ -88,6 +88,10 @@ for_window [class="runner"] floating enable, resize set width 1400 height 1000, 
 bindcode $mod+65 exec --no-startup-id kitty --class=picker -1 ~/.config/i3/picker.sh
 for_window [class="picker"] floating enable, resize set width 1200 height 800, move position center, border pixel 0
 
+# open python shell as a calculator
+bindsym $mod+l exec --no-startup-id kitty --class=calculator -1 ~/.config/i3/calculator.sh
+for_window [class="calculator"] floating enable, resize set width 800 height 800, move position center
+
 # start firefox
 bindsym $mod+o exec --no-startup-id firefox
 
