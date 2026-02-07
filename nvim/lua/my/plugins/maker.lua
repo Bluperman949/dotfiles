@@ -4,7 +4,7 @@ return {
     event = 'VeryLazy',
     config = function ()
       require'maker'.setup{
-        window_command = 'tabnew | term'
+        window_command = 'tabnew | term',
       }
     end
   }
