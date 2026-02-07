@@ -27,5 +27,5 @@ alias zbl='zig build -l'
 
 alias vconf='cd ~/.config/nvim; nvim'
 
-alias findfont="fc-list ':' file | grep "
+alias findfont="fc-list ':' file | grep -i"
 alias alsamixer='alsamixer -BMV capture'
