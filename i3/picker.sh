@@ -36,5 +36,5 @@ elif [[ $tchar == ' ' ]]; then wmctrl -a "$pick"
 elif [[ $tchar == ' ' ]]; then
   pick=$(echo $pick | grep -oE '\(.+\)')
   pick=${pick:1:-1}
-  ( trap '' HUP; gtk-launch "$pick" >/dev/null 2>&1 ) &
+  sh -c "( trap '' HUP; gtk-launch $pick >/dev/null 2>&1 ) &"
 fi
