@@ -4,6 +4,9 @@ bat
 brightnessctl
 btop
 escrotum-git
+fcitx
+fcitx-configtool
+fcitx-mozc
 fd
 feh
 firefox
@@ -42,10 +45,9 @@ wget
 wmctrl
 xclip
 xdg-desktop-portal
-xorg-xinput
 xorg-xauth
+xorg-xinput
+xorg-xset
 zip
 zsh
 zvm
-fcitx
-fcitx-configtool
