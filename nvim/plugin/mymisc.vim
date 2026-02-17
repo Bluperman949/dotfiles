@@ -10,12 +10,15 @@ set listchars=tab:»\ ,eol:󰌑
 set termguicolors
 let g:c_syntax_for_h=1
 
+set signcolumn=yes:1
+hi clear SignColumn
+hi link SignColumn Normal
+
 set relativenumber
 set colorcolumn=80
 set textwidth=79
 set cursorline
 set numberwidth=2
-set signcolumn=yes:1
 set linebreak
 set nowrap
 set splitright
