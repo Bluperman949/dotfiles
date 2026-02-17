@@ -4,7 +4,7 @@ SAVEHIST=1000
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd -t f'
-export FZF_DEFAULT_OPTS="--no-mouse --color=16 --color=border:#32302f"
+export FZF_DEFAULT_OPTS="--no-mouse --color=current-fg:bright-white,prompt:bright-blue,pointer:bright-red,marker:magenta,hl:green,current-hl:bright-green"
 
 # bat
 export BAT_THEME='gruvbox-dark'
