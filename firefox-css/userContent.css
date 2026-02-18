@@ -1,0 +1,101 @@
+/* globals */
+:root {
+  --dark0   : #282828;
+  --dark1   : #3c3836;
+  --dark2   : #504945;
+  --dark3   : #665c54;
+  --dark4   : #7c6f64;
+  --gray    : #928374;
+  --light4  : #a89984;
+  --light3  : #bdae93;
+  --light2  : #d5c4a1;
+  --light1  : #ebdbb2;
+  --light0  : #fbf1c7;
+  --bred    : #fb4934;
+  --bgreen  : #b8bb26;
+  --byellow : #fabd2f;
+  --bblue   : #83a598;
+  --bpurple : #d3869b;
+  --baqua   : #8ec07c;
+  --borange : #fe8019;
+  --nred    : #cc241d;
+  --ngreen  : #98971a;
+  --nyellow : #d79921;
+  --nblue   : #458588;
+  --npurple : #b16286;
+  --naqua   : #689d6a;
+  --norange : #d65d0e;
+  --fred    : #9d0006;
+  --fgreen  : #79740e;
+  --fyellow : #b57614;
+  --fblue   : #076678;
+  --fpurple : #8f3f71;
+  --faqua   : #427b58;
+  --forange : #af3a03;
+}
+
+@-moz-document domain("lwtech.instructure.com") {
+  /* renaming globals */
+  :root {
+    --notification: var(--nblue);
+  }
+
+  input {
+    color: var(--light2) !important;
+    background-color: var(--dark1) !important;
+    border: none !important;
+  }
+
+  .ajas-search-form {
+    border: none !important;
+  }
+
+  .ajas-search-widget {
+    --svg-fill: var(--light2) !important;
+  }
+
+  .ic-DashboardCard__action-layout,
+  .menu-item__badge,
+  .unread-count {
+    --bclinks: var(--notification) !important;
+  }
+
+  .ic-DashboardCard__action-badge,
+  .menu-item__badge {
+    border-radius: 2px !important;
+    font-weight: bold !important;
+    padding: 0 !important;
+  }
+
+  .css-1eaecfq-baseButton__content {
+    color: var(--light3) !important;
+    border-color: var(--light3) !important;
+  }
+
+  .bettercanvas-todo-svg {
+    fill: var(--gray) !important;
+  }
+
+  .image-block-image > i::before {
+    color: var(--gray) !important;
+  }
+
+  .css-1ylm87c-textInput__facade,
+  .css-1hvoot1-textInput__facade {
+    background-color: var(--dark1) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .css-118ltkl-view--inlineBlock-badge {
+    background-color: var(--dark2) !important;
+    color: var(--light2) !important;
+    border-radius: 2px !important;
+  }
+
+  span[color="secondary"],
+  #calendar-app .fc-other-month,
+  #calendar-drag-and-drop-container .fc-other-month {
+    color: var(--dark4) !important;
+  }
+}
