@@ -51,6 +51,8 @@ for module in $@; do
 
     # create link every file in this module
     for file in $(ls -A -I 'setup.sh' -I '.lndot'); do
+      # expand globs
+      dest=$(eval "echo $dest")
       makelink $PWD/$file $dest/$file
     done
   # the ! char means "don't link anything"
