@@ -49,6 +49,9 @@ for module in $@; do
   if [[ ${dest:0:1} == @ ]]; then
     dest=${dest:1}
 
+    # make sure folder exists
+    mkdir -p "$dest"
+
     # create link every file in this module
     for file in $(ls -A -I 'setup.sh' -I '.lndot'); do
       # expand globs
