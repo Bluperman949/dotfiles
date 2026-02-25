@@ -48,14 +48,11 @@ for module in $@; do
   # the @ char means "link every file individually"
   if [[ ${dest:0:1} == @ ]]; then
     dest=${dest:1}
-
     # make sure folder exists
     mkdir -p "$dest"
 
     # create link every file in this module
     for file in $(ls -A -I 'setup.sh' -I '.lndot'); do
-      # expand globs
-      dest=$(eval "echo $dest")
       makelink $PWD/$file $dest/$file
     done
   # the ! char means "don't link anything"
