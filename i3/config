@@ -28,9 +28,10 @@ set $wsDiscord "11:."
 #               Start-up               #
 ########################################
 
-# Keyboard customizations
+# Keyboard & mouse customizations
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec_always --no-startup-id xset r rate 200 50
+exec_always --no-startup-id ~/.dotfiles/i3/local.sh
 
 # fcitx for input method management. env vars managed separately.
 exec --no-startup-id fcitx
@@ -62,9 +63,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 focus_follows_mouse no
 
 # toggle mousepad
-bindsym $mod+m exec --no-startup-id ~/.config/i3/touchpad.sh
+bindsym $mod+m exec --no-startup-id ~/.dotfiles/i3/touchpad.sh
 # toggle colemak layout
-bindsym $mod+apostrophe exec --no-startup-id ~/.config/i3/colemak.sh
+bindsym $mod+apostrophe exec --no-startup-id ~/.dotfiles/i3/colemak.sh
 # suspend
 bindsym $mod+n exec --no-startup-id systemctl suspend
 
@@ -85,12 +86,15 @@ bindsym $mod+Shift+Return exec --no-startup-id kitty --class=runner -1
 for_window [class="runner"] floating enable, resize set width 1400 height 1000, move position center
 
 # open my picker (replacement for dmenu/rofi)
-bindcode $mod+65 exec --no-startup-id kitty --class=picker -1 ~/.config/i3/picker.sh
+bindcode $mod+65 exec --no-startup-id kitty --class=picker -1 ~/.dotfiles/i3/picker.sh
 for_window [class="picker"] floating enable, resize set width 1200 height 800, move position center, border pixel 0
 
 # open python shell as a calculator
-bindsym $mod+l exec --no-startup-id kitty --class=calculator -1 ~/.config/i3/calculator.sh
+bindsym $mod+l exec --no-startup-id kitty --class=calculator -1 ~/.dotfiles/i3/calculator.sh
 for_window [class="calculator"] floating enable, resize set width 800 height 800, move position center
+
+# color picker piped to clipboard
+bindsym $mod+p exec --no-startup-id ~/.dotfiles/i3/grabc.sh
 
 # start firefox
 bindsym $mod+o exec --no-startup-id firefox
@@ -99,9 +103,6 @@ bindsym $mod+o exec --no-startup-id firefox
 bindsym $mod+x exec --no-startup-id escrotum -C
 bindsym $mod+Shift+x exec --no-startup-id escrotum -sC
 bindsym Ctrl+Mod1+r exec --no-startup-id escrotum -r ~/Videos/Recordings/%Y-%m-%d_%H:%M:%S-recording.webm
-
-# color picker piped to clipboard
-bindsym $mod+p exec --no-startup-id ~/.config/i3/grabc.sh
 
 # kill the focused window
 bindsym $mod+q kill

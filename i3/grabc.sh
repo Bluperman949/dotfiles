@@ -1,3 +1,3 @@
 #!/bin/bash
 
-grabc | xclip -sel clip
+echo -n $(grabc) | xclip -sel clip
