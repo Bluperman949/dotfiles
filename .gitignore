@@ -4,3 +4,4 @@ nvim/lua/my/plugins/dev.lua
 kitty/navigate_kitty.py
 kitty/pass_keys.py
 firefox-css/.lndot
+i3/local.sh
