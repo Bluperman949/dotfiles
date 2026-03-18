@@ -8,10 +8,10 @@ fi
 function makelink {
   modulefile=$1
   destfile=$2
-  echo "[37mAttempting to link [1m$modulefile[0;37m to [1m$destfile[0;37m...[0m"
+  echo "[37mAttempting to symlink [1m$modulefile[0;37m to [1m$destfile[0;37m...[0m"
 
   if   [[ -h $destfile ]]; then
-    echo "[37mSymlink at [1m$destfile[0;37m already exsists and will be replaced.[0m"
+    echo "[37mSymlink already exsists at [1m$destfile[0;37m and will be replaced.[0m"
     rm $destfile
   elif [[ -e $destfile ]]; then
     read -p "[31mFile [1m$destfile[0;31m exists.[0m Remove it? [Y/n]: " -n 1 yn
@@ -52,7 +52,7 @@ for module in $@; do
     mkdir -p "$dest"
 
     # create link every file in this module
-    for file in $(ls -A -I 'setup.sh' -I '.lndot'); do
+    for file in $(ls -A -I 'setup.sh' -I '.lndot' -I '.gitignore'); do
       makelink $PWD/$file $dest/$file
     done
   # the ! char means "don't link anything"
