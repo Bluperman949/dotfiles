@@ -1,11 +1,8 @@
-alias show='show.sh'
-alias open='open.sh'
-alias d='. explore.sh'
-alias bh='bhelp.sh'
+alias show='~/.dotfiles/zsh/scripts/show.sh'
+alias bh='~/.dotfiles/zsh/scripts/bhelp.sh'
+alias listen='~/.dotfiles/zsh/scripts/listen.sh'
 
 alias grep='grep --color=auto'
-alias rg='rg -i'
-alias rgh='rg -.i'
 alias ls='ls --color=auto'
 alias lss='ls -lAhGS --color=always'
 alias la='ls -A --color=always'
@@ -27,6 +24,7 @@ alias zb='zig build'
 alias zbl='zig build -l'
 
 alias vconf='cd ~/.config/nvim; nvim'
+alias lndot='~/.dotfiles/lndot.sh'
 
 alias findfont="fc-list ':' file | grep -i"
 alias alsamixer='alsamixer -BMV capture'
