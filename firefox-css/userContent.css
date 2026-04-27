@@ -1,65 +1,173 @@
 /* globals */
 :root {
-  --dark0   : #282828;
-  --dark1   : #3c3836;
-  --dark2   : #504945;
-  --dark3   : #665c54;
-  --dark4   : #7c6f64;
-  --gray    : #928374;
-  --light4  : #a89984;
-  --light3  : #bdae93;
-  --light2  : #d5c4a1;
-  --light1  : #ebdbb2;
-  --light0  : #fbf1c7;
-  --bred    : #fb4934;
-  --bgreen  : #b8bb26;
-  --byellow : #fabd2f;
-  --bblue   : #83a598;
-  --bpurple : #d3869b;
-  --baqua   : #8ec07c;
-  --borange : #fe8019;
-  --nred    : #cc241d;
-  --ngreen  : #98971a;
-  --nyellow : #d79921;
-  --nblue   : #458588;
-  --npurple : #b16286;
-  --naqua   : #689d6a;
-  --norange : #d65d0e;
-  --fred    : #9d0006;
-  --fgreen  : #79740e;
-  --fyellow : #b57614;
-  --fblue   : #076678;
-  --fpurple : #8f3f71;
-  --faqua   : #427b58;
-  --forange : #af3a03;
+  --gruv-dark0   : #282828;
+  --gruv-dark1   : #3c3836;
+  --gruv-dark2   : #504945;
+  --gruv-dark3   : #665c54;
+  --gruv-dark4   : #7c6f64;
+  --gruv-gray    : #928374;
+  --gruv-light4  : #a89984;
+  --gruv-light3  : #bdae93;
+  --gruv-light2  : #d5c4a1;
+  --gruv-light1  : #ebdbb2;
+  --gruv-light0  : #fbf1c7;
+  --gruv-bred    : #fb4934;
+  --gruv-bgreen  : #b8bb26;
+  --gruv-byellow : #fabd2f;
+  --gruv-bblue   : #83a598;
+  --gruv-bpurple : #d3869b;
+  --gruv-baqua   : #8ec07c;
+  --gruv-borange : #fe8019;
+  --gruv-nred    : #cc241d;
+  --gruv-ngreen  : #98971a;
+  --gruv-nyellow : #d79921;
+  --gruv-nblue   : #458588;
+  --gruv-npurple : #b16286;
+  --gruv-naqua   : #689d6a;
+  --gruv-norange : #d65d0e;
+  --gruv-fred    : #9d0006;
+  --gruv-fgreen  : #79740e;
+  --gruv-fyellow : #b57614;
+  --gruv-fblue   : #076678;
+  --gruv-fpurple : #8f3f71;
+  --gruv-faqua   : #427b58;
+  --gruv-forange : #af3a03;
 }
 
-@-moz-document domain("lwtech.instructure.com") {
+@-moz-document domain("instructure.com") {
   /* renaming globals */
   :root {
-    --notification: var(--nblue);
+    --notification: var(--gruv-nblue);
+    --ic-link-color: var(--gruv-naqua) !important;
+    --dp-panels-link-color: var(--gruv-naqua) !important;
+    --bs-primary-border: var(--gruv-naqua) !important;
   }
 
+  /* generic text formatting stuff */
+  code:not(pre > code),
+  pre {
+    border: 1px solid var(--gruv-dark1) !important;
+    border-radius: 0px !important;
+    font-size: inherit !important;
+  }
+
+  blockquote {
+    border-left-color: var(--gruv-dark2) !important;
+  }
+
+  /* less aqua text everywhere - links should be white w/ aqua underline */
+  a {
+    color: var(--gruv-light1) !important;
+  }
+
+  a:hover:not(a[href="#"]) {
+    text-decoration: solid 1px var(--bclinks) underline !important;
+  }
+
+  /* get rid of pipes between footer links, use nice borders */
+  #footer-links a:after {
+    content: "" !important;
+  }
+
+  #footer-links a {
+    border-right: 1px solid var(--gruv-dark1);
+    text-align: center;
+  }
+
+  /* no need to style the button I don't use */
+  #immersive_reader_mount_point {
+    visibility: hidden;
+  }
+
+  /* nav item with a colored img icon. it doesn't even work, so... bye-bye! */
+  li.globalNavExternalTool:has(img[alt="My Materials"]) {
+    display: none;
+  }
+
+  /* prev/next buttons when viewing a Module */
+  .module-sequence-footer span:first-of-type {
+    background: var(--gruv-dark1) !important;
+    border: none !important;
+    border-radius: 0.2rem;
+    color: var(--gruv-light1) !important;
+  }
+
+  /* most small icons */
+  svg {
+    color: var(--gruv-light2) !important;
+  }
+
+  /* text boxes and dropdowns */
   input {
-    color: var(--light2) !important;
-    background-color: var(--dark1) !important;
+    color: var(--gruv-light2) !important;
+    background-color: var(--gruv-dark1) !important;
     border: none !important;
   }
 
+  /* dropdown arrow next to input */
+  .css-mvoync-textInput__afterElement {
+    background-color: var(--gruv-dark1) !important;
+    border-radius: 0 !important;
+  }
+
+  span:has(.css-mvoync-textInput__afterElement) {
+    border: none !important;
+  }
+
+  /* search bar at the top of dashboard */
   .ajas-search-form {
     border: none !important;
   }
 
   .ajas-search-widget {
-    --svg-fill: var(--light2) !important;
+    --svg-fill: var(--gruv-light2) !important;
   }
 
+  .ajas-search-widget button:hover {
+    --svg-fill: var(--gruv-light0) !important;
+    background-color: var(--gruv-faqua) !important;
+  }
+
+  /* blue form buttons */
+  button[type="submit"] > span,
+  .css-1nhpenf-view--inlineBlock-baseButton > span {
+    background-color: var(--gruv-fblue) !important;
+  }
+
+  button[type="submit"]:hover > span,
+  .css-1nhpenf-view--inlineBlock-baseButton:hover > span {
+    background-color: var(--gruv-nblue) !important;
+  }
+
+  button[type="submit"] span,
+  .css-1nhpenf-view--inlineBlock-baseButton span,
+  button svg {
+    color: var(--gruv-light1) !important;
+  }
+
+  button[type="submit"]:hover span,
+  .css-1nhpenf-view--inlineBlock-baseButton:hover span,
+  button:hover svg {
+    color: var(--gruv-light0) !important;
+  }
+
+  /* use blue instead of aqua for unread badges */
   .ic-DashboardCard__action-layout,
   .menu-item__badge,
   .unread-count {
     --bclinks: var(--notification) !important;
   }
 
+  .unread_dot,
+  .nav-badge {
+    background-color: var(--notification) !important;
+  }
+
+  .nav-badge {
+    color: var(--gruv-light1) !important;
+  }
+
+  /* make dashboard & sidebar unread badges square*/
   .ic-DashboardCard__action-badge,
   .menu-item__badge {
     border-radius: 2px !important;
@@ -67,35 +175,106 @@
     padding: 0 !important;
   }
 
-  .css-1eaecfq-baseButton__content {
-    color: var(--light3) !important;
-    border-color: var(--light3) !important;
-  }
-
+  /* icons on the BetterCanvas sidebar */
   .bettercanvas-todo-svg {
-    fill: var(--gray) !important;
+    fill: var(--gruv-light4) !important;
   }
 
-  .image-block-image > i::before {
-    color: var(--gray) !important;
+  /* BetterCanvas color changes */
+  .bettercanvas-due-soon,
+  .bettercanvas-assignment-overdue {
+    background: var(--gruv-nred) !important;
+    color: var(--gruv-light1) !important;
   }
 
+  /* grades page */
+  .toggle_comments_link {
+    background-color: var(--gruv-dark1) !important;
+    border: none !important;
+  }
+
+  .toggle_comments_link .comment_count {
+    color: var(--gruv-light2) !important;
+  }
+
+  .selected-assignment {
+    background-color: var(--gruv-dark2) !important;
+  }
+
+  /* grades page - comment flyout */
+  .css-66n4b4-tray {
+    background-color: var(--gruv-dark1) !important;
+  }
+
+  .css-lp6aqj-view {
+    background-color: var(--gruv-dark2) !important;
+  }
+
+  .css-lp6aqj-view span {
+    color: var(--gruv-light1) !important;
+  }
+
+  .css-14ud9rz-view--inlineBlock-baseButton:hover .css-1e1ui47-baseButton__content {
+    background-color: var(--gruv-gray) !important;
+  }
+
+  .css-y7yn1k-baseButton__content svg {
+    color: var(--gruv-light0) !important;
+  }
+
+  .css-y7yn1k-baseButton__content {
+    background: var(--gruv-fblue) !important;
+    border: none !important;
+  }
+
+  .css-13zx1po-view--inlineBlock-baseButton:hover .css-y7yn1k-baseButton__content {
+    background: var(--gruv-nblue) !important;
+  }
+
+  /* Courses flyout */
+  .css-aih8pt-view-listItem > div {
+    color: var(--gruv-light3) !important;
+  }
+
+  /* Courses page - wow, the class names make sense here! */
+  .course-list-sort-icon {
+    color: var(--gruv-gray) !important;
+  }
+
+  .course-list-sort-icon.sorted {
+    color: var(--gruv-ngreen) !important;
+  }
+
+  .course-list-table-row:hover {
+    background-color: unset !important;
+  }
+
+  .course-list-favorite-icon.icon-star {
+    color: var(--gruv-borange) !important;
+  }
+
+  /* these are calendar-related (I think) but IDK what they do */
   .css-1ylm87c-textInput__facade,
   .css-1hvoot1-textInput__facade {
-    background-color: var(--dark1) !important;
+    background-color: var(--gruv-dark1) !important;
     border: 0 !important;
     border-radius: 0 !important;
   }
 
   .css-118ltkl-view--inlineBlock-badge {
-    background-color: var(--dark2) !important;
-    color: var(--light2) !important;
+    background-color: var(--gruv-dark2) !important;
+    color: var(--gruv-light2) !important;
     border-radius: 2px !important;
   }
 
   span[color="secondary"],
   #calendar-app .fc-other-month,
   #calendar-drag-and-drop-container .fc-other-month {
-    color: var(--dark4) !important;
+    color: var(--gruv-dark4) !important;
+  }
+
+  /* I have no idea what this does */
+  .image-block-image > i::before {
+    color: var(--gruv-gray) !important;
   }
 }
