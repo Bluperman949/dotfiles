@@ -85,6 +85,7 @@ try
   nunmap grr
   nunmap grn
   nunmap grt
+  nunmap grx
 catch /No such mapping/ | endtry
 
 " move lines up and down, vscode-style

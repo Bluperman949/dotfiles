@@ -4,14 +4,19 @@ return {
     lazy = false,
     priority = 1000,
     config = function ()
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        command = [[
+        hi link Delimiter GruvboxFg3 |
+        hi Folded gui=italic guibg=#282828 |
+        hi clear SignColumn
+        ]],
+        pattern = 'gruvbox',
+      })
       vim.cmd[[colorscheme gruvbox]]
-      vim.cmd[[hi link Delimiter GruvboxFg3]]
     end,
   },
   {
     'neanias/everforest-nvim',
-    lazy = false,
-    priority = 1000,
     config = function ()
       require'everforest'.setup{
         background = 'hard',
@@ -20,7 +25,8 @@ return {
   },
   {
     'Mofiqul/vscode.nvim',
-    lazy = false,
-    priority = 1000,
+  },
+  {
+    'nordtheme/vim',
   },
 }

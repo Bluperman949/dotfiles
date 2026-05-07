@@ -11,8 +11,6 @@ set termguicolors
 let g:c_syntax_for_h=1
 
 set signcolumn=yes:1
-hi clear SignColumn
-hi link SignColumn Normal
 
 set relativenumber
 set colorcolumn=80
@@ -27,8 +25,6 @@ set clipboard=unnamedplus
 
 augroup mymisc
   autocmd!
-  au ColorScheme gruvbox hi Folded gui=italic guibg=#282828
   au WinEnter *.* if winwidth('.')<82 | exe 'norm 82|' | endif
   au TermOpen term://* startinsert
 augroup END
-
