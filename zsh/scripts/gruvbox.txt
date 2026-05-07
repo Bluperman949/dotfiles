@@ -1,0 +1,36 @@
+[97;48;2;029;032;033m  #1d2021  dark0_hard      bg0h             [0m
+[97;48;2;040;040;040m  #282828  dark0           bg0      black   [0m
+[97;48;2;050;048;047m  #32302f  dark0_soft      bg0s             [0m
+[97;48;2;060;056;054m  #3c3836  dark1           bg1              [0m
+[97;48;2;080;073;069m  #504945  dark2           bg2              [0m
+[97;48;2;102;092;084m  #665c54  dark3           bg3              [0m
+[97;48;2;124;111;100m  #7c6f64  dark4           bg4              [0m
+[30;48;2;146;131;116m  #928374  g               gray             [0m
+[30;48;2;168;153;132m  #a89984  light4          fg4              [0m
+[30;48;2;189;174;147m  #bdae93  light3          fg3              [0m
+[30;48;2;213;196;161m  #d5c4a1  light2          fg2              [0m
+[30;48;2;235;219;178m  #ebdbb2  light1          fg1              [0m
+[30;48;2;242;229;188m  #f2e5bc  light0_soft     fg0s             [0m
+[30;48;2;251;241;199m  #fbf1c7  light0          fg0      white   [0m
+[30;48;2;249;245;215m  #f9f5d7  light0_hard     fg0h             [0m
+[30;48;2;251;073;052m  #fb4934  bright_red      bred     redb    [0m
+[30;48;2;184;187;038m  #b8bb26  bright_green    bgreen   greenb  [0m
+[30;48;2;250;189;047m  #fabd2f  bright_yellow   byellow  yellowb [0m
+[30;48;2;131;165;152m  #83a598  bright_blue     bblue    blueb   [0m
+[30;48;2;211;134;155m  #d3869b  bright_purple   bpurple  purpleb [0m
+[30;48;2;142;192;124m  #8ec07c  bright_aqua     baqua    aquab   [0m
+[30;48;2;254;128;025m  #fe8019  bright_orange   borange  orangeb [0m
+[30;48;2;204;036;029m  #cc241d  neutral_red     nred     red     [0m
+[30;48;2;152;151;026m  #98971a  neutral_green   ngreen   green   [0m
+[30;48;2;215;153;033m  #d79921  neutral_yellow  nyellow  yellow  [0m
+[30;48;2;069;133;136m  #458588  neutral_blue    nblue    blue    [0m
+[30;48;2;177;098;134m  #b16286  neutral_purple  npurple  purple  [0m
+[30;48;2;104;157;106m  #689d6a  neutral_aqua    naqua    aqua    [0m
+[30;48;2;214;093;014m  #d65d0e  neutral_orange  norange  orange  [0m
+[30;48;2;157;000;006m  #9d0006  faded_red       fred     redf    [0m
+[30;48;2;121;116;014m  #79740e  faded_green     fgreen   greenf  [0m
+[30;48;2;181;118;020m  #b57614  faded_yellow    fyellow  yellowf [0m
+[30;48;2;007;102;120m  #076678  faded_blue      fblue    bluef   [0m
+[30;48;2;143;063;113m  #8f3f71  faded_purple    fpurple  purplef [0m
+[30;48;2;066;123;088m  #427b58  faded_aqua      faqua    aquaf   [0m
+[30;48;2;175;058;003m  #af3a03  faded_orange    forange  orangef [0m

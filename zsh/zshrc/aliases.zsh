@@ -1,6 +1,7 @@
 alias show='~/.dotfiles/zsh/scripts/show.sh'
 alias bh='~/.dotfiles/zsh/scripts/bhelp.sh'
 alias listen='~/.dotfiles/zsh/scripts/listen.sh'
+alias gruvbox='~/.dotfiles/zsh/scripts/gruvbox.sh'
 
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
