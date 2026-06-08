@@ -113,6 +113,10 @@ bindsym $mod+x exec --no-startup-id escrotum -C
 bindsym $mod+Shift+x exec --no-startup-id escrotum -sC
 bindsym Ctrl+Mod1+r exec --no-startup-id escrotum -r ~/Videos/Recordings/%Y-%m-%d_%H:%M:%S-recording.webm
 
+# clear dunst notifications
+bindsym $mod+k exec --no-startup-id dunstctl close
+bindsym $mod+Shift+k exec --no-startup-id dunstctl close-all
+
 # kill the focused window
 bindsym $mod+q kill
 
