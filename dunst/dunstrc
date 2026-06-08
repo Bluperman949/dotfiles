@@ -99,23 +99,23 @@
     padding = 8
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 16
 
     # Padding between text and icon.
-    text_icon_padding = 0
+    text_icon_padding = 16
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "#aaaaaa"
+    frame_color = "#282828" # unused
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 0
+    gap_size = 8
 
     # Define a color for the separator.
     # possible values are:
@@ -131,7 +131,7 @@
     #  * urgency_ascending: sort by urgency (low then normal then critical)
     #  * urgency_descending: sort by urgency (critical then normal then low)
     #  * update: sort by update (most recent always at the top)
-    sort = yes
+    sort = update
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -184,7 +184,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "<b>%s</b>\n%b\n<small>%a</small>"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -242,7 +242,7 @@
     min_icon_size = 32
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 128
+    max_icon_size = 32
 
     # Paths to default icons (only necessary when not using recursive icon lookup)
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -335,47 +335,31 @@
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
 [experimental]
-    # Calculate the dpi to use on a per-monitor basis.
-    # If this setting is enabled the Xft.dpi value will be ignored and instead
-    # dunst will attempt to calculate an appropriate dpi value for each monitor
-    # using the resolution and physical size. This might be useful in setups
-    # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
-
-    # Pause notification timeout when mouse hovers over the notification window.
-    # When enabled, notifications won't timeout while the mouse pointer is over
-    # them. The timeout resumes when the pointer leaves the window.
-    # Only works on Wayland.
     pause_on_mouse_over = false
-
-    # Use PCRE regular expressions for filtering rules.
-    # This setting overrides enable_posix_regex.
     enable_pcre_regex = false
 
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 10
-    # Icon for notifications with low urgency
+    background = "#282828"
+    frame_color = "#282828"
+    foreground = "#ebdbb2"
+    timeout = 5
     default_icon = dialog-information
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
+    background = "#3c3836"
+    frame_color = "#504945"
+    foreground = "#ebdbb2"
     timeout = 10
     override_pause_level = 30
-    # Icon for notifications with normal urgency
     default_icon = dialog-information
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
-    frame_color = "#ff0000"
-    timeout = 0
+    background = "#cc241d"
+    foreground = "#fbf1c7"
+    frame_color = "#fb4934"
+    timeout = 20
     override_pause_level = 60
-    # Icon for notifications with critical urgency
     default_icon = dialog-warning
 
 # Every section that isn't one of the above is interpreted as a rules to
