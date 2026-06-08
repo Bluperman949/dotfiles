@@ -3,6 +3,8 @@ alsa-utils
 bat
 brightnessctl
 btop
+discord
+dunst
 escrotum-git
 fcitx
 fcitx-configtool
@@ -16,11 +18,11 @@ grabc
 i3-wm
 jdk21-temurin
 jdk8-temurin
+jq
 kitty
 less
 ly
 man-db
-nano
 neofetch
 neovim
 npm
@@ -40,8 +42,9 @@ ttf-ms-fonts
 ttf-twemoji-color
 ugrep
 unzip
-vencord
+vencord-installer-cli-bin
 vlc
+vlc-plugins-all
 wget
 wmctrl
 xclip
