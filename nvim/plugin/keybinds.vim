@@ -17,20 +17,20 @@ nno <A-q> :q<cr>
 
 " lsp debugging stuff
 nno ,; <cmd>lua require'jdtls'.start_or_attach(require'my.jdtls-config')<cr>
-nno ,l <cmd>LspInfo<cr>
+nno ,l <cmd>checkhealth vim.lsp<cr>
 
 " fold blocks easily
-nno zff zfaB
+nno zff zfip
 
 " toggle invis chars + wrapping with 't'
 nno ts <cmd>set list!<cr>
 nno tw <cmd>set wrap!<cr>
 
-" nohlsearch with F4
-nno <F4> <cmd>nohlsearch<cr>
+" nohlsearch easily
+nno gh <cmd>nohlsearch<cr>
 
 " easier home/end wth H/L/;
-imap <A-;> <end>
+imap <C-;> <end>
 map H ^
 map L $
 map gL g$
@@ -102,6 +102,9 @@ nmap m2 si{<C-j>=a{
 
 " make Join accessible (J is remapped above)
 nno <C-j> J
+
+" make keywordprg accessible(K is remapped above)
+nno gK K
 
 " redo is the opposite of undo
 nmap U <C-r>
