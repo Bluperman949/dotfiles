@@ -29,3 +29,5 @@ alias lndot='~/.dotfiles/lndot.sh'
 
 alias findfont="fc-list ':' file | grep -i"
 alias alsamixer='alsamixer -BMV capture'
+
+alias pls='eval "sudo $(fc -nl -1)"'
