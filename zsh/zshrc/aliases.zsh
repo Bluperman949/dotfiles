@@ -17,7 +17,7 @@ alias gitt='git status'
 alias gmit='git commit -m '
 alias gog='git-graph -m simple -n 40'
 alias gogl='git-graph -m simple'
-alias gogh="git log --format='%H %s' -n 10"
+alias gogh="git log --format='%H %s'"
 
 alias py='python'
 alias gw='./gradlew'
