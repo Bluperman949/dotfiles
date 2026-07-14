@@ -104,6 +104,10 @@
     border: none !important;
   }
 
+  input::placeholder {
+    color: var(--gruv-gray) !important;
+  }
+
   /* dropdown arrow next to input */
   .css-mvoync-textInput__afterElement {
     background-color: var(--gruv-dark1) !important;
@@ -277,4 +281,48 @@
   .image-block-image > i::before {
     color: var(--gruv-gray) !important;
   }
+
+  /* Inbox page */
+
+  #compose-message-modal > div {
+    background: var(--gruv-dark0) !important;
+    color: var(--gruv-light1) !important;
+    border: 0px !important;
+  }
+
+  #compose-message-modal .css-iygu2x-view {
+    border-top: 0px !important;
+  }
+
+  #compose-message-modal .css-t3k3bl-baseButton__content,
+  #compose-message-modal #upload-attachment-button,
+  #compose-message-modal #media-upload-button {
+    background-color: var(--gruv-dark1) !important;
+    border: 0px !important;
+  }
+
+  .css-1r8h6v7-textInput__facade {
+    background: var(--gruv-dark1) !important;
+    border: 0px !important;
+  }
+
+  .css-1r8h6v7-textInput__facade button {
+    background-color: var(--gruv-fgreen) !important;
+    border: 0px !important;
+  }
+
+  .css-142nmf5-checkboxFacade__facade,
+  .css-8zb32a-checkboxFacade__facade {
+    background: var(--gruv-dark1) !important;
+    border: 1px solid var(--gruv-dark2) !important;
+  }
+
+  .css-1rkslnu-checkboxFacade__label {
+    color: var(--gruv-gray) !important;
+  }
+
+  .css-vqt2vm-text {
+    color: var(--gruv-bred) !important;
+  }
+
 }
