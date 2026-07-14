@@ -1,6 +1,7 @@
 "
 "  keybinds.vim
 "  Author: Christian Doolittle
+"  Created: 20-Sep-2024
 "  A completely unorganized set of bindings that tie together my nvim setup.
 "
 
@@ -95,10 +96,6 @@ nno <A-k> <cmd>m-2<cr>
 " quick find+replace, vscode-style
 nno <F2> "ryiw:%s/<C-r>r//g<left><left>
 vno <F2> "ry:%s/<C-r>r//g<left><left>
-
-" expand/minify curly-brace one-liners
-nno m1 va{J
-nmap m2 si{<C-j>=a{
 
 " make Join accessible (J is remapped above)
 nno <C-j> J
