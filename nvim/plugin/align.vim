@@ -1,16 +1,26 @@
-nno <silent> + <cmd>set opfunc=Align<cr>g@
+"
+"  align.vim
+"  Author: Christian Doolittle
+"  Created: 12-Jun-2025
+"  Modified: 16-Jul-2026
+"  Vertically align segments of text by a given character.
+"
 
-function! Align(mode)
-  let l:chr=getcharstr()
-  let g:aligncol=0
-  '[,']call Align_GetCol(l:chr)
-  exec "'[,']norm! f".l:chr."20i ".g:aligncol."|dw"
+function! s:getaligncol(char)
+  exec "norm! ".1."f".a:char
+  return col(".")
 endfunction
 
-function! Align_GetCol(chr)
-  exec 'norm f'.a:chr
-  let l:pos=col('.')
-  if g:aligncol < l:pos
-    let g:aligncol=l:pos
-  endif
+function! s:align(_)
+  let l:char = nr2char(getchar())
+  let l:maxcol = 0
+  '[,']let l:maxcol = max([l:maxcol, s:getaligncol(l:char)])
+  exec "'[,']norm! ".1."f".l:char."64i \<esc>".l:maxcol."|dw"
 endfunction
+
+noremap <silent> <Plug>Align <cmd>set opfunc=<SID>align<cr>g@
+
+if !(exists("g:align_no_mappings") && g:align_no_mappings)
+  nmap + <Plug>Align
+  xmap + <Plug>Align
+endif
