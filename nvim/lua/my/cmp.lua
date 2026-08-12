@@ -81,6 +81,12 @@ M.config = function ()
     snippet = {
       expand = function(args)
         ls.lsp_expand(args.body)
+        -- Some LSPs use "snippets" for simple autocompletions. This issue has
+        -- plagued me for two years. Time to eradicate it.
+        -- (Exit newly-expanded snippets with no jumpable nodes)
+        local snip = ls.get_active_snip()
+        if snip == nil then return end
+        if not ls.jumpable(1) then ls.unlink_current() end
       end,
     },
     sources = cmp.config.sources{
