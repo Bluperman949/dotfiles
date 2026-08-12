@@ -16,6 +16,7 @@ return {
       map({'n'}, '<C-f>', '<nop>') -- stop <C-f><any> from timing out
       map({'n'}, '<C-f><C-f>', fzf.blines)
       map({'n'}, '<C-f><C-b>', fzf.builtin)
+      map({'n'}, '<C-f><C-i>', fzf.grep_project)
 
       -- navigation with 't'
       map({'n'}, 'to', fzf.oldfiles)
@@ -32,6 +33,7 @@ return {
       map({'n'}, 'gd', fzf.lsp_definitions)
       map({'n'}, 'ga', fzf.lsp_code_actions)
       map({'n'}, 'gf', fzf.lsp_document_symbols)
+      map({'n'}, 'gF', fzf.lsp_workspace_symbols)
 
       -- shut up that one error
       fzf.register_ui_select()

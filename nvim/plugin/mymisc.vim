@@ -5,7 +5,7 @@
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set listchars=tab:»\ ,eol:󰌑
+set listchars=tab:»\ ,eol:󰌑,space:·
 
 set termguicolors
 let g:c_syntax_for_h=1
@@ -13,6 +13,7 @@ let g:c_syntax_for_h=1
 set signcolumn=yes:1
 
 set relativenumber
+set number
 set colorcolumn=80
 set textwidth=79
 set cursorline

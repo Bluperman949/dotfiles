@@ -89,6 +89,11 @@ try
   nunmap grx
 catch /No such mapping/ | endtry
 
+" inspect ASCII (default conflicts with LSP binds)
+nno <C-a><C-a> ga
+" inspect highlight
+nno <C-a><C-h> <cmd>Inspect<cr>
+
 " move lines up and down, vscode-style
 nno <A-j> <cmd>m+1<cr>
 nno <A-k> <cmd>m-2<cr>
