@@ -32,7 +32,8 @@ M.config = function ()
   end, { 'i', 's' })
   -- jump forwards in snippet
   local mapping_jump_forwards = cmp.mapping(function ()
-    if ls.locally_jumpable(1) then ls.jump(1) end
+    if ls.locally_jumpable(1) then ls.jump(1)
+    elseif ls.in_snippet() then ls.unlink_current() end -- exit bugged snippet
   end, { 'i', 's' })
 
   local MAPPINGS_INSERT = {
@@ -81,21 +82,16 @@ M.config = function ()
     snippet = {
       expand = function(args)
         ls.lsp_expand(args.body)
-        -- Some LSPs use "snippets" for simple autocompletions. This issue has
-        -- plagued me for two years. Time to eradicate it.
-        -- (Exit newly-expanded snippets with no jumpable nodes)
-        local snip = ls.get_active_snip()
-        if snip == nil then return end
-        if not ls.jumpable(1) then ls.unlink_current() end
       end,
     },
-    sources = cmp.config.sources{
+    sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'luasnip'  },
       { name = 'path'     },
+      { name = 'lazydev'  },
+    }, {
       { name = 'buffer'   },
-      { name = 'lazydev', group_index = 0 },
-    },
+    }),
     experimental = { ghost_text = true, },
     completion = { completeopt = 'noinsert', },
 
@@ -119,6 +115,17 @@ M.config = function ()
 
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
+  -- Some LSPs use snippets with a single non-zero-index Insert Node for
+  -- simple autocompletions. This issue has plagued me for nearly two years.
+  -- Time to eradicate it.
+  -- (Exit newly-expanded snippets with one or zero jumpable nodes)
+  cmp.event:on('confirm_done', function ()
+    local snip = ls.get_active_snip()
+    if snip == nil then return end
+    if not ls.jumpable(1) then ls.unlink_current() end
+  end)
+
 end
 
 return M

@@ -1,22 +1,12 @@
-local _ENV = require'my.snippets._defs'
+local ls = require'my.snippets._defs'
+local s, i, t = ls.s, ls.i, ls.t
 
 return {
-  s('lsnip', {
-    t"s('", i(1), t{"', {",
-      '\t'}, i(2), t{'',
-    '}),'}
-  }),
-  s('rq', {
-    t"require'", i(1), t"'"
-  }),
-  s('local', {
-    t'local ', i(1), t' = '
-  }),
+  s('rq', { t('require\''), i(0), t('\'') }),
+  s('lc', { t('local '), i(1), t(' = '), i(0) }),
   s('M', {
-    t{'local M = {}',
-    '',
-    ''}, i(1), t{'',
-    '',
-    'return M'}
+    t({ 'local M = {}', '', '' }),
+    i(0),
+    t({ '', '', 'return M' })
   }),
 }
