@@ -1,5 +1,16 @@
+<!DOCTYPE html>
 <?php
 
-
-
 ?>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>{NAME}</title>
+  </head>
+
+  <body>
+
+  </body>
+
+</html>

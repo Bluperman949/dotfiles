@@ -13,8 +13,7 @@
 "  skeleton. Just keeping this around for scripting languages.
 "
 
-"change this line per-branch for now, idk how to relative-reference viml
-let g:skeldir='~/.config/nvim/skeleton'
+let g:skeldir=stdpath('config').'/skeleton'
 
 "All skeletons have access to:
 "  {FILE}: filename
