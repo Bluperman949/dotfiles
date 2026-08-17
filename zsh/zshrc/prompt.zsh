@@ -1,3 +1,3 @@
 autoload -Uz promptinit
 promptinit
-eval "$(starship init zsh)"
+eval "$(starship init zsh | sed "s/''/\"/g")"
