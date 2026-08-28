@@ -1,1 +1,0 @@
-lndot '' ~/.config/rofi
