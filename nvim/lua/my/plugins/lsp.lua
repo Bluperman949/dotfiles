@@ -6,7 +6,10 @@ return {
   {
     'williamboman/mason.nvim',
     -- loaded as dependency
-    opts = {},
+    config = function ()
+      require'mason'.setup{}
+      vim.keymap.set({'n'}, '||', require'mason.ui'.open)
+    end,
   },
   {
     'williamboman/mason-lspconfig.nvim',
@@ -28,9 +31,8 @@ return {
     keys = {
       { 'gr', vim.lsp.buf.rename },
       { 'g<space>', vim.lsp.buf.hover },
+      { ',l', function () vim.health._check('', 'lsp') end },
     },
-    config = function ()
-    end
   },
   {
     'mfussenegger/nvim-jdtls',
@@ -43,5 +45,8 @@ return {
       })
       jdt_start_or_attach()
     end,
+    keys = {
+      { ',;', jdt_start_or_attach },
+    },
   },
 }

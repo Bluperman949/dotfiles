@@ -10,3 +10,5 @@ end
 
 -- make Lazy available to nvim
 vim.opt.rtp:prepend(lazypath)
+
+vim.keymap.set('n', [[\\]], require'lazy'.show)

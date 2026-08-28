@@ -1,5 +1,8 @@
 return {
   {
+    'nvim-tree/nvim-web-devicons',
+  },
+  {
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
   },

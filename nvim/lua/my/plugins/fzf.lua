@@ -1,10 +1,11 @@
----@type function
-local map = vim.keymap.set
+local map = function (lhs, rhs) vim.keymap.set('n', lhs, rhs) end
 
 return {
   {
     'ibhagwan/fzf-lua',
-    dependencies = { 'nvim-web-devicons' },
+    dependencies = {
+      'nvim-web-devicons'
+    },
     event = 'VeryLazy',
     config = function ()
       local fzf = require'fzf-lua'
@@ -13,30 +14,28 @@ return {
       }
 
       -- "searching" with `<C-f>`
-      map({'n'}, '<C-f>', '<nop>') -- stop <C-f><any> from timing out
-      map({'n'}, '<C-f><C-f>', fzf.blines)
-      map({'n'}, '<C-f><C-b>', fzf.builtin)
-      map({'n'}, '<C-f><C-i>', fzf.grep_project)
+      map('<C-f>', '<nop>') -- stop <C-f><any> from timing out
+      map('<C-f><C-f>', fzf.blines)
+      map('<C-f><C-b>', fzf.builtin)
+      map('<C-f><C-i>', fzf.grep_project)
+      map('<C-f><C-g>', fzf.git_status)
 
       -- navigation with 't'
-      map({'n'}, 'to', fzf.oldfiles)
-      map({'n'}, 'ti', fzf.files)
-      map({'n'}, 'tt', fzf.buffers)
+      map('to', fzf.oldfiles)
+      map('ti', fzf.files)
+      map('tt', fzf.buffers)
 
       -- holdover from `trouble.nvim`. "tp" for "Trouble Problems"
-      map({'n'}, 'tp', fzf.diagnostics_document)
-      map({'n'}, 'tP', fzf.diagnostics_workspace)
-      map({'n'}, 'tq', fzf.quickfix)
+      map('tp', fzf.diagnostics_document)
+      map('tP', fzf.diagnostics_workspace)
+      map('tq', fzf.quickfix)
 
       -- lsp with 'g'
-      map({'n'}, 'gu', fzf.lsp_references)
-      map({'n'}, 'gd', fzf.lsp_definitions)
-      map({'n'}, 'ga', fzf.lsp_code_actions)
-      map({'n'}, 'gf', fzf.lsp_document_symbols)
-      map({'n'}, 'gF', fzf.lsp_workspace_symbols)
-
-      -- shut up that one error
-      fzf.register_ui_select()
+      map('gu', fzf.lsp_references)
+      map('gd', fzf.lsp_definitions)
+      map('ga', fzf.lsp_code_actions)
+      map('gf', fzf.lsp_document_symbols)
+      map('gF', fzf.lsp_workspace_symbols)
     end,
   },
 }

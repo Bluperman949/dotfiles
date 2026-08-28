@@ -17,7 +17,7 @@ set number
 set colorcolumn=80
 set textwidth=79
 set cursorline
-set numberwidth=2
+set numberwidth=3
 set linebreak
 set nowrap
 set splitright

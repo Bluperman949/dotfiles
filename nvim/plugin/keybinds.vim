@@ -14,34 +14,34 @@ nno <C-s> :up<cr>
 ino <A-e> <esc>:up<cr>
 
 " hey guys, how do I exit vim?
-nno <A-q> :q<cr>
+nno <A-q> <cmd>q<cr>
+nno zq <cmd>q<cr>
 
-" lsp debugging stuff
-nno ,; <cmd>lua require'jdtls'.start_or_attach(require'my.jdtls-config')<cr>
-nno ,l <cmd>checkhealth vim.lsp<cr>
+" easy restart for testing
+nno <bslash>r <cmd>restart<cr>
 
-" fold blocks easily
-nno zff zfip
-
-" toggle invis chars + wrapping with 't'
-nno ts <cmd>set list!<cr>
-nno tw <cmd>set wrap!<cr>
+" toggle text display options with 'z'
+nno z<space> <cmd>set list!\|set list?<cr>
+nno zw <cmd>set wrap!\|set wrap?<cr>
 
 " nohlsearch easily
-nno gh <cmd>nohlsearch<cr>
+nno zl <cmd>nohlsearch<cr>
 
-" easier home/end wth H/L/;
-imap <C-;> <end>
+" easier home/end wth H/L
 map H ^
 map L $
-map gL g$
 sunm H
 sunm L
+
+" make old H/L accessible
+no gH H
+no gL L
+sunm gH
 sunm gL
 
 " easier scrolling
-nno J <C-e>
-nno K <C-y>
+nno <C-j> <C-e>
+nno <C-k> <C-y>
 
 nno ( <scrollwheelleft>
 nno ) <scrollwheelright>
@@ -73,11 +73,6 @@ map S yS
 sunm s
 sunm S
 
-" plugin screens
-nno \\   <cmd>Lazy<cr>
-nno \|\| <cmd>Mason<cr>
-nno - <cmd>Oil<cr>
-
 " unmap default lsp binds
 try
   xunmap gra
@@ -87,7 +82,8 @@ try
   nunmap grn
   nunmap grt
   nunmap grx
-catch /No such mapping/ | endtry
+catch /No such mapping/
+endtry
 
 " inspect ASCII (default conflicts with LSP binds)
 nno <C-a><C-a> ga
@@ -102,21 +98,11 @@ nno <A-k> <cmd>m-2<cr>
 nno <F2> "ryiw:%s/<C-r>r//g<left><left>
 vno <F2> "ry:%s/<C-r>r//g<left><left>
 
-" make Join accessible (J is remapped above)
-nno <C-j> J
-
-" make keywordprg accessible(K is remapped above)
-nno gK K
-
 " redo is the opposite of undo
 nmap U <C-r>
 
 " auto markdown code block, immune to autopairs
 ino `` ```<cr>```<up><end>
-
-" autopairs-immune quotes
-ino <A-'> '
-ino <A-S-'> "
 
 " replace word (eg. a big indent) with space
 nno c<space> ciw<space><esc>
@@ -125,9 +111,6 @@ nno c<space> ciw<space><esc>
 no <A-r> %
 ino <A-r> %
 sunm <A-r>
-
-" write escape character
-ino <A-[> <C-v><esc>
 
 " change a file with 4-space indentation to 2-space
 nno <C-S-i> <cmd>%s/    /  /g<cr><cmd>nohlsearch<cr>
