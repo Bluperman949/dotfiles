@@ -95,7 +95,7 @@ bindsym $mod+Shift+Return exec --no-startup-id kitty --class=runner -1
 for_window [class="runner"] floating enable, resize set width 1400 height 1000, move position center
 
 # open my picker (replacement for dmenu/rofi)
-bindcode $mod+65 exec --no-startup-id kitty --class=picker -1 ~/.dotfiles/i3/picker.sh
+bindcode $mod+65 exec --no-startup-id kitty --class=picker -1 ~/.dotfiles/i3/picker.bash
 for_window [class="picker"] floating enable, resize set width 1200 height 800, move position center, border pixel 0
 
 # open python shell as a calculator
