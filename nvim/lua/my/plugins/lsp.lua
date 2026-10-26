@@ -31,7 +31,19 @@ return {
     keys = {
       { 'gr', vim.lsp.buf.rename },
       { 'g<space>', vim.lsp.buf.hover },
-      { ',l', function () vim.health._check('', 'lsp') end },
+      { ',l', function ()
+        vim.ui.select({ 'Health', 'Stop' }, {}, function (choice)
+          if choice == 'Health' then
+            vim.health._check('', 'lsp')
+          elseif choice == 'Stop' then
+            vim.ui.select(
+              vim.lsp.get_clients(),
+              { format_item = function (client) return client.name end },
+              function (item) if item then item:stop() end end
+            )
+          end
+        end)
+      end },
     },
   },
   {
