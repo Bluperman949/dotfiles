@@ -125,3 +125,6 @@ function! ClearBufs()
     endif
   endfor
 endfunction
+
+" disable default vim-kitty-navigator default keymaps
+let g:kitty_navigator_no_mappings = 1
