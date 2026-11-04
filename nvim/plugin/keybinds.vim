@@ -85,11 +85,6 @@ try
 catch /No such mapping/
 endtry
 
-" inspect ASCII (default conflicts with LSP binds)
-nno <C-a><C-a> ga
-" inspect highlight
-nno <C-a><C-h> <cmd>Inspect<cr>
-
 " move lines up and down, vscode-style
 nno <A-j> <cmd>m+1<cr>
 nno <A-k> <cmd>m-2<cr>
@@ -128,3 +123,15 @@ endfunction
 
 " disable default vim-kitty-navigator default keymaps
 let g:kitty_navigator_no_mappings = 1
+
+" inspect ASCII (default conflicts with LSP binds)
+nno <C-h><C-a> ga
+
+" inspect highlight/syntax
+nno <C-h><C-h> <cmd>call GetSyntax()<cr>
+function GetSyntax()
+  let l:groups=map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  :Inspect
+  if empty(l:groups) | return | end
+  exec 'syn list ' . join(l:groups, ' ')
+endfunction
