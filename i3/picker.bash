@@ -26,7 +26,7 @@ get_apps() {
 }
 
 get_cmds() {
-  printf "[92m [0m %s\n" $(compgen -c)
+  printf "[92m [0m %s\n" $(compgen -c | sort -u)
 }
 
 get_all_options() {
