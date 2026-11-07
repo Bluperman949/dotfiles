@@ -2,7 +2,7 @@ return {
   {
     'knubie/vim-kitty-navigator',
     enabled = function ()
-      return vim.env.TERM:match('kitty')
+      return vim.env.TERM and vim.env.TERM:match('kitty')
     end,
     event = 'VeryLazy',
     config = function ()
