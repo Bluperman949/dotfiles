@@ -6,16 +6,19 @@
 "  Vertically align segments of text by a given character.
 "
 
-function! s:getaligncol(char)
-  exec "norm! ".1."f".a:char
-  return col(".")
-endfunction
-
 function! s:align(_)
   let l:char = nr2char(getchar())
-  let l:maxcol = 0
-  '[,']let l:maxcol = max([l:maxcol, s:getaligncol(l:char)])
-  exec "'[,']norm! ".1."f".l:char."64i \<esc>".l:maxcol."|dw"
+  let s:aligncol = 0
+  '[,']call s:findcol(l:char)
+  exec "'[,']norm! ".v:count."f".l:char.s:aligncol."i \<esc>".s:aligncol."|dw"
+endfunction
+
+function! s:findcol(char)
+  exec "norm! ".v:count."f".a:char
+  let l:col = col(".")
+  if (l:col > s:aligncol)
+    let s:aligncol = l:col
+  endif
 endfunction
 
 noremap <silent> <Plug>Align <cmd>set opfunc=<SID>align<cr>g@
